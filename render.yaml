@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: kwizzle-landing-page
+    env: static
+    repo: https://github.com/kwizzlesurp10-ctrl/kwizzle-landing-page
+    branch: main
+    staticPublishPath: .
+    autoDeploy: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
