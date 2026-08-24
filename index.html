@@ -49,6 +49,7 @@
             </div>
             <nav class="flex items-center gap-6 text-sm font-medium text-zinc-400">
                 <a href="#features" class="hover:text-zinc-200 transition-colors">Features</a>
+                <a href="https://smithery.ai/servers/kwizzlesurp10/x402-mcp" target="_blank" class="hover:text-blue-400 transition-colors flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5l-10-5v10l10 5 10-5v-10l-10 5z"/></svg>Smithery</a>
                 <a href="https://x402-mcp.onrender.com/.well-known/mcp/server-card.json" target="_blank" class="hover:text-zinc-200 transition-colors font-mono text-xs">server-card.json</a>
                 <a href="https://x402-mcp.onrender.com" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-lg transition-all duration-200 shadow-lg shadow-emerald-500/20">Launch Console</a>
             </nav>
@@ -73,9 +74,24 @@
                 <a href="https://x402-mcp.onrender.com" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-extrabold rounded-xl transition-all duration-200 shadow-xl shadow-emerald-500/20 text-center">
                     Launch Mission Control
                 </a>
-                <a href="https://github.com/kwizzlesurp10-ctrl/x402-mcp" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800/80 rounded-xl transition-all font-bold text-center">
-                    View GitHub Repository
+                <a href="https://smithery.ai/servers/kwizzlesurp10/x402-mcp" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-xl transition-all duration-200 shadow-xl shadow-blue-500/20 text-center flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5l-10-5v10l10 5 10-5v-10l-10 5z"/></svg>
+                    Discover on Smithery
                 </a>
+                <a href="https://github.com/kwizzlesurp10-ctrl/x402-mcp" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800/80 rounded-xl transition-all font-bold text-center">
+                    GitHub
+                </a>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <div class="bg-zinc-900/60 border border-zinc-800/60 px-6 py-3 rounded-xl flex items-center gap-4 text-sm font-mono text-zinc-300 shadow-inner group">
+                    <span class="text-emerald-500 select-none">❯</span> 
+                    <span class="text-zinc-200">npx</span> 
+                    <span class="text-zinc-400">@smithery/cli@latest mcp add kwizzlesurp10/x402-mcp</span>
+                    <button onclick="navigator.clipboard.writeText('npx @smithery/cli@latest mcp add kwizzlesurp10/x402-mcp')" class="ml-2 p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors opacity-0 group-hover:opacity-100" title="Copy to clipboard">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </button>
+                </div>
             </div>
 
             <!-- Live Status Grid -->
