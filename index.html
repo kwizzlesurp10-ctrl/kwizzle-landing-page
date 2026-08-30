@@ -37,6 +37,25 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 font-sans min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-zinc-950 overflow-x-hidden">
+    <!-- Intro Video Splash Screen -->
+    <div id="intro-splash" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-zinc-950 transition-opacity duration-1000">
+        <div class="relative w-full h-full max-w-7xl max-h-[80vh] flex flex-col items-center justify-center p-6">
+            <p class="text-emerald-400 mb-4 font-mono tracking-widest text-sm animate-pulse flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+                HARUNA INTRO SEQUENCE
+            </p>
+            <video id="intro-video" class="w-full h-full object-contain rounded-xl shadow-[0_0_50px_rgba(16,185,129,0.2)] bg-black" controls autoplay>
+                <source src="Untitled%20sssa(1).wav" type="video/mp4">
+                <source src="Untitled%20sssa(1).wav" type="video/webm">
+                <source src="Untitled%20sssa(1).wav" type="audio/wav">
+                Your browser does not support the video tag.
+            </video>
+            <button id="enter-btn" class="mt-8 px-10 py-4 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-zinc-950 font-extrabold rounded-xl transition-all duration-300 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-1">
+                Enter Kwizzle
+            </button>
+        </div>
+    </div>
+
     <!-- Parallax Background Grid Layer -->
     <div class="fixed inset-0 bg-grid pointer-events-none z-0 parallax-bg opacity-70"></div>
 
@@ -69,19 +88,6 @@
             <p class="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
                 Kwizzle powers agentic workflows with standardized EIP-5573 / HTTP 402 micropayments on Base, exposing rich city compliance, property search, and automated intelligence.
             </p>
-            <!-- Audio Intro -->
-            <div class="flex justify-center pt-2 pb-2">
-                <div class="bg-zinc-900/40 p-4 rounded-2xl border border-zinc-800/40 backdrop-blur-md glow inline-flex flex-col items-center shadow-lg transition-transform hover:scale-[1.02]">
-                    <p class="text-xs text-emerald-400 mb-3 font-mono uppercase tracking-wider flex items-center gap-2 font-bold">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
-                        Main Intro -- Haruna
-                    </p>
-                    <audio controls autoplay loop class="h-10 outline-none opacity-90 hover:opacity-100 transition-opacity invert-[.85] hue-rotate-[180deg]">
-                        <source src="Untitled%20sssa(1).wav" type="audio/wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-            </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <a href="https://x402-mcp.onrender.com" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-zinc-950 font-extrabold rounded-xl transition-all duration-300 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
@@ -223,6 +229,20 @@
             const scrolled = window.pageYOffset;
             document.documentElement.style.setProperty('--scroll', scrolled + 'px');
         }, { passive: true });
+
+        // Splash Screen Logic
+        const splash = document.getElementById('intro-splash');
+        const enterBtn = document.getElementById('enter-btn');
+        const introVideo = document.getElementById('intro-video');
+
+        enterBtn.addEventListener('click', () => {
+            if (introVideo) introVideo.pause();
+            splash.style.opacity = '0';
+            splash.style.pointerEvents = 'none';
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 1000);
+        });
 
         // Live status fetcher
         async function fetchStatus() {
