@@ -1,0 +1,15 @@
+services:
+  landing-page:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kwizzle-landing-page:latest
+    container_name: kwizzle-landing-page
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8080}:80"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
