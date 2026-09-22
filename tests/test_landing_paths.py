@@ -43,3 +43,10 @@ def test_render_routes_do_not_swallow_static_files() -> None:
     assert "destination: /index.html" not in yaml
     assert "source: /health" in yaml
     assert "x402-mcp.onrender.com/health" in yaml
+
+
+def test_health_and_manifest_handoff_pages_exist() -> None:
+    health = (ROOT / "health" / "index.html").read_text(encoding="utf-8")
+    manifest = (ROOT / ".well-known" / "mcp" / "index.html").read_text(encoding="utf-8")
+    assert "https://x402-mcp.onrender.com/health" in health
+    assert "https://x402-mcp.onrender.com/.well-known/mcp" in manifest
