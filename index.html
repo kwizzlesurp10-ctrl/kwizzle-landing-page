@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="base:app_id" content="6a7018e2a8c4f2b6db3b3e71" />
     <title>Kwizzle — Agent-to-Agent Commerce & Compliance</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -116,7 +118,7 @@
                 </div>
                 <div>
                     <div class="text-xs text-zinc-500 uppercase tracking-wider">Default Network</div>
-                    <div id="network-status" class="text-sm font-semibold text-zinc-400 mt-1 font-mono">Base Sepolia</div>
+                    <div id="network-status" class="text-sm font-semibold text-zinc-400 mt-1 font-mono">Checking...</div>
                 </div>
                 <div>
                     <div class="text-xs text-zinc-500 uppercase tracking-wider">Payee Address</div>
@@ -212,25 +214,55 @@
             document.documentElement.style.setProperty('--scroll', scrolled + 'px');
         }, { passive: true });
 
-        // Live status fetcher
+        const splash = document.getElementById('intro-splash');
+        const enterBtn = document.getElementById('enter-btn');
+        const introVideo = document.getElementById('intro-video');
+        if (enterBtn && splash) {
+            enterBtn.addEventListener('click', () => {
+                if (introVideo) introVideo.pause();
+                splash.style.opacity = '0';
+                splash.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 1000);
+            });
+        }
+
+        const NETWORK_LABELS = {
+            'eip155:8453': 'Base',
+            'eip155:84532': 'Base Sepolia',
+        };
+
         async function fetchStatus() {
             try {
-                const res = await fetch('https://x402-mcp.onrender.com/.well-known/mcp/server-card.json');
-                if (res.ok) {
-                    const data = await res.json();
-                    document.getElementById('gateway-status').innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span><span>Online</span>';
-                    
-                    const config = data.configSchema?.properties || {};
-                    const hasWallet = config.EVM_PRIVATE_KEY ? true : false;
-                    document.getElementById('wallet-status').innerText = hasWallet ? 'Connected' : 'Not Configured';
-                    document.getElementById('wallet-status').className = hasWallet ? 'text-emerald-400 text-sm font-semibold mt-1' : 'text-zinc-500 text-sm font-semibold mt-1';
-                    
-                    const payTo = config.X402_PAY_TO_ADDRESS ? "Active" : "Not Configured";
-                    document.getElementById('payee-status').innerText = payTo;
-                    if (payTo === "Active") {
-                        document.getElementById('payee-status').className = 'text-zinc-200 text-sm font-semibold mt-1 font-mono';
-                    }
+                const res = await fetch('https://x402-mcp.onrender.com/health');
+                if (!res.ok) {
+                    throw new Error('health ' + res.status);
                 }
+                const health = await res.json();
+                const online = health.status === 'ok';
+                document.getElementById('gateway-status').innerHTML = online
+                    ? '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span><span>Online</span>'
+                    : '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span><span>Degraded</span>';
+
+                const walletOn = health.wallet_configured === true;
+                const walletEl = document.getElementById('wallet-status');
+                walletEl.innerText = walletOn ? 'Connected' : 'Not Configured';
+                walletEl.className = walletOn
+                    ? 'text-emerald-400 text-sm font-semibold mt-1'
+                    : 'text-zinc-500 text-sm font-semibold mt-1';
+
+                const networkEl = document.getElementById('network-status');
+                networkEl.innerText = NETWORK_LABELS[health.x402_facilitator_network]
+                    || health.x402_facilitator_network
+                    || 'Unknown';
+
+                const payeeOn = health.pay_to_configured === true;
+                const payeeEl = document.getElementById('payee-status');
+                payeeEl.innerText = payeeOn ? 'Active' : 'Not Configured';
+                payeeEl.className = payeeOn
+                    ? 'text-zinc-200 text-sm font-semibold mt-1 font-mono'
+                    : 'text-zinc-500 text-sm font-semibold mt-1 font-mono';
             } catch (e) {
                 console.error("Failed to fetch live API status", e);
                 document.getElementById('gateway-status').innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span><span>Offline / Slow</span>';

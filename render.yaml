@@ -7,6 +7,12 @@ services:
     staticPublishPath: .
     autoDeploy: true
     routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+      - type: redirect
+        source: /health
+        destination: https://x402-mcp.onrender.com/health
+      - type: redirect
+        source: /.well-known/mcp
+        destination: https://x402-mcp.onrender.com/.well-known/mcp
+      - type: redirect
+        source: /.well-known/mcp/server-card.json
+        destination: https://x402-mcp.onrender.com/.well-known/mcp/server-card.json
