@@ -395,6 +395,10 @@
                         : 'text-zinc-500 text-sm font-semibold mt-1 font-mono';
                 } catch (e) {
                     console.error('Failed to fetch live API status', e);
+                    const liveRegion = document.getElementById('gateway-live-region');
+                    if (liveRegion) {
+                        liveRegion.textContent = 'Gateway offline or unreachable';
+                    }
                     document.getElementById('gateway-status').innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse-soft"></span><span>Offline / Slow</span>';
                 }
             }
