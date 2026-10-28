@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/google-agentic-commerce/a2a-specs/main/schemas/agent-v1.json",
+  "name": "Kwizzle A2A Commerce & US Compliance Gateway",
+  "version": "1.0.0",
+  "description": "Agent-to-Agent (A2A) Commerce & Compliance API Gateway supporting HTTP 402 micropayments on Base L2, MCP server integrations, and US municipal open data.",
+  "homepage": "https://kwizzlesurp.com/",
+  "documentation": "https://kwizzlesurp.com/llms.txt",
+  "agent_card": "https://kwizzlesurp.com/.well-known/agent-card.json",
+  "a2a_endpoint": "https://kwizzlesurp.com/a2a",
+  "mcp_endpoint": "https://kwizzlesurp.com/mcp/mcp",
+  "facilitator": "https://x402.org/facilitator",
+  "facilitatorSigner": "0xd407e409E34E0b9afb99EcCeb609bDbcD5e7f1bf",
+  "settlement": {
+    "network": "eip155:8453",
+    "token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "tokenSymbol": "USDC",
+    "decimals": 6,
+    "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+    "operatorFunding": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+    "standardPerCallAtomic": "10000"
+  },
+  "capabilities": [
+    "http_402_micropayments",
+    "eip3009_gasless_settlement",
+    "mcp_streamable_http",
+    "us_city_open_data_compliance",
+    "base_l2_gas_pulse",
+    "autonomous_swarm_research"
+  ]
+}

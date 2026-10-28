@@ -1,4 +1,49 @@
+# robots.txt for https://kwizzlesurp.com/
+# Production crawler directives & autonomous AI agent discovery configuration
+
+# Global web crawlers
 User-agent: *
 Allow: /
+Disallow: /api/private/
+Disallow: /ops/
 
+# OpenAI crawlers (GPTBot, SearchBot)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /.well-known/agent-card.json
+Allow: /.well-known/agent.json
+Allow: /.well-known/mcp
+Allow: /.well-known/x402
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic crawler
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /.well-known/agent-card.json
+Allow: /.well-known/agent.json
+
+# Perplexity crawler
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /.well-known/agent-card.json
+
+# Apple Intelligence crawler
+User-agent: Applebot-Extended
+Allow: /
+
+# Machine-Readable Manifests & Endpoints
+Allow: /llms.txt
+Allow: /.well-known/agent-card.json
+Allow: /.well-known/agent.json
+Allow: /.well-known/mcp
+Allow: /.well-known/x402
+Allow: /.well-known/funding.json
+Allow: /us/cities
+
+# XML Sitemap Pointer
 Sitemap: https://kwizzlesurp.com/sitemap.xml

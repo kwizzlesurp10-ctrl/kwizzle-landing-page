@@ -1,0 +1,146 @@
+# Kwizzle
+
+> Kwizzle is an Agent-to-Agent (A2A) Commerce and Compliance API Gateway operated by SEVTECH. It enables autonomous AI agents to discover tools, negotiate terms, and execute instant HTTP 402 micropayments settled in USDC on Base Layer-2 (eip155:8453), alongside accessing 17-jurisdiction US municipal open-data compliance feeds and 26 remote Model Context Protocol (MCP) tools.
+
+## Agent Quickstart
+
+Autonomous agents can consume Kwizzle services without manual signups, custodial API keys, or credit cards:
+
+1. **Discover Agent Card**: Fetch `https://kwizzlesurp.com/.well-known/agent-card.json` for full machine-readable capability and skill descriptors.
+2. **Probe Pricing & Schemas**: Call `x402.probe` on any paid endpoint or `city.sample` to inspect output schemas for $0.00.
+3. **Execute & Settle**: Send requests to paid endpoints (e.g. `/us/mn/property-check` or MCP tool `city.check`). Receive HTTP status `402 Payment Required`, sign an EIP-712 EIP-3009 transfer authorization, and resubmit with the `PAYMENT-SIGNATURE` header.
+4. **Connect via MCP**: Connect your Claude Desktop, Cursor, or LangChain agent to `https://kwizzlesurp.com/mcp/mcp` using Streamable HTTP.
+
+## Machine Discovery Endpoints
+
+- [A2A Agent Card](https://kwizzlesurp.com/.well-known/agent-card.json): Full Google A2A v1.0 Agent Card detailing skills, endpoints, and payment extensions.
+- [A2A Pointer](https://kwizzlesurp.com/.well-known/agent.json): Canonical discovery pointer for autonomous crawlers.
+- [MCP Manifest](https://kwizzlesurp.com/.well-known/mcp): Streamable HTTP Model Context Protocol entrypoint descriptor.
+- [MCP Server Card](https://kwizzlesurp.com/.well-known/mcp/server-card.json): Catalog metadata for Smithery, Glama, and MCP registries.
+- [x402 Pricing Catalog](https://kwizzlesurp.com/.well-known/x402): Machine-readable pricing rules, rate limits, and network settlement parameters.
+- [Operator Funding Manifest](https://kwizzlesurp.com/.well-known/funding.json): Non-custodial funding coordinates and operator tips.
+- [OpenAPI Specification](https://kwizzlesurp.com/openapi.json): Complete OpenAPI 3.1 REST API definitions.
+- [US Cities Catalog](https://kwizzlesurp.com/us/cities): JSON listing of 17 supported municipal open-data jurisdictions.
+
+## Settlement Coordinates (x402 on Base L2)
+
+- **Blockchain Network**: Base Mainnet (`eip155:8453`)
+- **Settlement Asset**: Native USD Coin (USDC)
+- **Token Contract Address**: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+- **Merchant PayTo Address**: `0x05e1720bB82F86B5bc7940a99FDC702E32256357`
+- **Operator Reserve Address**: `0x0d25A44f74868eCE53B305C97139CF4B62963410`
+- **x402 Facilitator URL**: `https://x402.org/facilitator`
+- **Facilitator Signer Address**: `0xd407e409E34E0b9afb99EcCeb609bDbcD5e7f1bf`
+- **Standard Per-Call Fee**: $0.01 USDC (`10000` atomic units, 6 decimals)
+- **Payment Scheme**: `exact` (per-call), `upto` (metered streaming), or credit pack purchases
+
+## Model Context Protocol (MCP) Tool Index
+
+Kwizzle exposes 26 remote MCP tools organized across 7 functional modules:
+
+### 1. Discovery & Capability Probing (Free)
+- `x402.agent_card`: Returns the complete A2A Protocol v1.0 Agent ID Card and skills catalog.
+- `a2a.resolve_card`: Resolves and validates an external agent's card from a URL or domain.
+- `x402.probe`: Evaluates HTTP 402 payment requirements on a URL without spending funds.
+- `x402.discover`: Searches the x402 Bazaar directory for third-party monetized APIs.
+- `x402.networks`: Returns supported CAIP-2 blockchain networks and facilitator signers.
+- `city.list`: Lists all 17 supported US municipal compliance jurisdictions.
+- `city.sample`: Returns a live full-schema property report for a benchmark address at $0.00.
+
+### 2. Micropayment Execution & Seller Rails
+- `x402.pay_and_fetch`: Signs, settles on Base L2, and fetches a paid resource in a single step ($0.01 USDC).
+- `x402.build_seller`: Generates HTTP 402 payment requirements headers for your own API endpoints.
+- `x402.verify`: Validates a buyer's cryptographic payment signature against the x402 facilitator.
+
+### 3. US Municipal Real Estate Compliance Feeds ($0.01 USDC)
+- `city.check`: Performs automated address-level rental license, building code violation, and zoning inspection across 17 US cities.
+- `check_city_property`: Standard alias for `city.check`.
+- `list_us_cities`: Standard alias for `city.list`.
+- `get_city_sample`: Standard alias for `city.sample`.
+- `resolve_agent_card`: Standard alias for `a2a.resolve_card`.
+
+### 4. Autonomous Swarm Agency & Resale Engines
+- `swarm.research`: Assembles an autonomous research dossier combining free and paid inputs. Supports zero-inventory risk via `allow_paid_inputs: false`.
+- `swarm.settle`: Validates buyer payment signatures, records settled revenue, and updates the internal ledger.
+- `swarm.revenue`: Returns autonomous financial analytics: gross margins, COGS, LTV:CAC ratios, and counterparty reliability.
+
+### 5. Commerce, Credits & Quota Management
+- `commerce.pro_requirements`: Inspects payment terms to activate the high-throughput Pro tier.
+- `commerce.activate_pro`: Activates Pro tier quota (50,000 calls/month, priority routing).
+- `commerce.credits_requirements`: Inspects bulk per-use credit pack options.
+- `commerce.purchase_credits`: Purchases a pack of 1,000 to 100,000 execution credits in a single transaction.
+
+### 6. Network Intelligence & Pulse ($0.01 USDC)
+- `pulse.base`: Base L2 gas timing, congestion metrics, and transaction submission recommendations.
+
+### 7. Host Telemetry & Diagnostics (Free)
+- `ops.metrics`: System runtime telemetry (Linux kernel, CPU load, RAM allocation, process health).
+
+## Supported US Municipal Jurisdictions (17 Cities)
+
+1. `mn` / Minneapolis, Minnesota
+2. `sp` / Saint Paul, Minnesota
+3. `nyc` / New York City, New York
+4. `chi` / Chicago, Illinois
+5. `la` / Los Angeles, California
+6. `sf` / San Francisco, California
+7. `sea` / Seattle, Washington
+8. `bos` / Boston, Massachusetts
+9. `den` / Denver, Colorado
+10. `atx` / Austin, Texas
+11. `phx` / Phoenix, Arizona
+12. `mia` / Miami, Florida
+13. `phl` / Philadelphia, Pennsylvania
+14. `det` / Detroit, Michigan
+15. `bal` / Baltimore, Maryland
+16. `dc` / Washington, District of Columbia
+17. `pdx` / Portland, Oregon
+
+## Developer Integration Examples
+
+### Installing in Cursor or Claude Desktop via Smithery
+```bash
+npx -y @smithery/cli@latest install kwizzlesurp10/x402-mcp --client claude
+```
+
+### Python Agent Invocation with EIP-3009 Gasless Signing
+```python
+import base64
+import requests
+from eth_account import Account
+
+AGENT_WALLET_KEY = "0x..."  # Agent private key with USDC balance on Base
+url = "https://kwizzlesurp.com/us/mn/property-check?address=1700+Penn+Ave+N"
+
+# 1. Probe for payment requirements
+r = requests.get(url)
+if r.status_code == 402:
+    req_header = r.headers.get("PAYMENT-REQUIRED")
+    # 2. Sign EIP-712 TransferWithAuthorization for $0.01 USDC
+    # 3. Resubmit with PAYMENT-SIGNATURE
+    signed_header = sign_eip3009_auth(req_header, AGENT_WALLET_KEY)
+    paid_response = requests.get(url, headers={"PAYMENT-SIGNATURE": signed_header})
+    print(paid_response.json())
+```
+
+### Direct MCP Client Configuration
+```json
+{
+  "mcpServers": {
+    "kwizzle": {
+      "url": "https://kwizzlesurp.com/mcp/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
+```
+
+## Contact & Developer Links
+
+- **Operator**: Kwizz Severson (`kwizzlesurp10-ctrl`)
+- **Organization**: SEVTECH
+- **Email**: kwizzlesurp10@gmail.com
+- **Agent MailRail**: agents@x402.org
+- **GitHub Repository**: https://github.com/kwizzlesurp10-ctrl/x402-mcp
+- **Smithery Server**: https://smithery.ai/server/kwizzlesurp10/x402-mcp
+- **Website**: https://kwizzlesurp.com/

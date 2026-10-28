@@ -95,6 +95,72 @@
             outline-offset: 3px;
         }
     </style>
+    <!-- Schema.org JSON-LD Structured Data for Kwizzle (kwizzlesurp.com) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://kwizzlesurp.com/#organization",
+          "name": "Kwizzle / SEVTECH",
+          "alternateName": "SEVTECH",
+          "url": "https://kwizzlesurp.com/",
+          "logo": "https://kwizzlesurp.com/favicon.svg",
+          "description": "Autonomous Agent-to-Agent (A2A) Commerce & US Municipal Compliance API Gateway powering instant x402 micropayments on Base Layer-2.",
+          "founder": {
+            "@type": "Person",
+            "name": "Kwizz Severson",
+            "sameAs": [
+              "https://github.com/kwizzlesurp10-ctrl",
+              "https://x.com/keithstworld"
+            ]
+          },
+          "sameAs": [
+            "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
+            "https://smithery.ai/server/kwizzlesurp10/x402-mcp",
+            "https://x402-mcp.onrender.com"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://kwizzlesurp.com/#application",
+          "name": "Kwizzle A2A Commerce & Compliance Gateway",
+          "applicationCategory": "DeveloperApplication, FinancialApplication",
+          "operatingSystem": "Web, Node.js, Python, Model Context Protocol (MCP)",
+          "url": "https://kwizzlesurp.com/",
+          "author": {
+            "@id": "https://kwizzlesurp.com/#organization"
+          },
+          "description": "Agent-to-Agent (A2A) Commerce & Compliance API Gateway supporting HTTP 402 micropayments on Base, MCP server integrations, and US municipal open data across 17 jurisdictions.",
+          "softwareRequirements": "Model Context Protocol (MCP) Client, EIP-5573 / x402 v2 Client, Base L2 Network",
+          "featureList": [
+            "Model Context Protocol (MCP) streamable-http gateway",
+            "Agent-to-Agent (A2A) v1.0 discovery & protocol negotiation",
+            "x402 v2 HTTP micropayments with EIP-3009 gasless settlement",
+            "17-jurisdiction US municipal property compliance open-data feeds",
+            "Autonomous swarm research and value-chain composition",
+            "Base Layer-2 gas timing and priority intelligence"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "0.01",
+            "priceCurrency": "USD",
+            "description": "Per-call micropayments in USDC on Base (eip155:8453) for compliance and transaction decision tools"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://kwizzlesurp.com/#website",
+          "url": "https://kwizzlesurp.com/",
+          "name": "Kwizzle",
+          "publisher": {
+            "@id": "https://kwizzlesurp.com/#organization"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="text-zinc-100 font-sans antialiased min-h-screen flex flex-col selection:bg-violet-500/40 selection:text-white overflow-x-hidden">
 
