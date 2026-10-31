@@ -5,6 +5,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy static website files and manifests
 COPY index.html favicon.ico favicon.svg robots.txt sitemap.xml llms.txt /usr/share/nginx/html/
+COPY assets/ /usr/share/nginx/html/assets/
 COPY .well-known /usr/share/nginx/html/.well-known/
 
 EXPOSE 80
