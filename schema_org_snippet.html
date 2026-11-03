@@ -10,7 +10,7 @@
       "name": "Kwizzle / SEVTECH",
       "alternateName": "SEVTECH",
       "url": "https://kwizzlesurp.com/",
-      "logo": "https://kwizzlesurp.com/assets/logo.png",
+      "logo": "https://kwizzlesurp.com/favicon.svg",
       "description": "Autonomous Agent-to-Agent (A2A) Commerce & US Municipal Compliance API Gateway powering instant x402 micropayments on Base Layer-2.",
       "founder": {
         "@type": "Person",
@@ -22,15 +22,94 @@
       },
       "sameAs": [
         "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
+        "https://github.com/kwizzlesurp10-ctrl/alpha-sentinel-mcp",
         "https://smithery.ai/server/kwizzlesurp10/x402-mcp",
-        "https://x402-mcp.onrender.com"
+        "https://x402-mcp.onrender.com",
+        "https://alpha-sentinel-mcp.vercel.app"
       ]
     },
     {
-      "@type": "SoftwareApplication",
+      "@type": ["SoftwareApplication", "Service"],
+      "@id": "https://kwizzlesurp.com/#alpha-sentinel",
+      "name": "Alpha Sentinel — Predictive Crypto Intelligence Hub for AI Agents",
+      "alternateName": "Alpha Sentinel Market Intelligence MCP",
+      "applicationCategory": "API Service",
+      "applicationSubCategory": "FinanceApplication",
+      "serviceType": "API Service",
+      "category": "Financial Market Analysis",
+      "operatingSystem": "All (HTTP, JSON-RPC 2.0, MCP, x402, REST)",
+      "url": "https://kwizzlesurp.com/",
+      "documentation": "https://kwizzlesurp.com/docs/",
+      "author": {
+        "@id": "https://kwizzlesurp.com/#organization"
+      },
+      "provider": {
+        "@id": "https://kwizzlesurp.com/#organization"
+      },
+      "description": "Alpha Sentinel is an institutional-grade API Service providing Financial Market Analysis, Predictive Alpha, On-chain Market Intelligence, x402 Monetized API access, and Autonomous Trading Data for AI agents and quantitative trading systems.",
+      "keywords": "Predictive Alpha, On-chain Market Intelligence, x402 Monetized API, Autonomous Trading Data, Financial Market Analysis, AI Agents, MCP Server",
+      "featureList": [
+        "fetch_price: Real-time cryptocurrency spot price, 24h change, and volume lookup ($0.005 USDC)",
+        "analyze_volatility: Statistical Z-score anomaly detection across configurable minute windows ($0.02 USDC)",
+        "aggregate_sentiment: Multi-source social & news sentiment aggregation across Twitter/X, Reddit, Telegram, and news ($0.01 USDC)",
+        "calculate_risk_score: Multi-factor asset & portfolio risk scoring weighting volatility, liquidity, market cap, and BTC correlation ($0.03 USDC)",
+        "generate_market_report: Full-spectrum daily, weekly, and monthly executive intelligence synthesis ($0.15 USDC)"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "fetch_price",
+          "description": "Real-time cryptocurrency spot price, 24h change, and trading volume lookup ($0.005 USDC on Base via x402).",
+          "price": "0.005",
+          "priceCurrency": "USD",
+          "url": "https://alpha-sentinel-mcp.vercel.app/tools/fetch_price"
+        },
+        {
+          "@type": "Offer",
+          "name": "analyze_volatility",
+          "description": "Statistical Z-score volatility anomaly detection across configurable windows ($0.02 USDC on Base via x402).",
+          "price": "0.02",
+          "priceCurrency": "USD",
+          "url": "https://alpha-sentinel-mcp.vercel.app/tools/analyze_volatility"
+        },
+        {
+          "@type": "Offer",
+          "name": "aggregate_sentiment",
+          "description": "Multi-source crypto sentiment aggregation across Twitter/X, Reddit, Telegram, and news ($0.01 USDC on Base via x402).",
+          "price": "0.01",
+          "priceCurrency": "USD",
+          "url": "https://alpha-sentinel-mcp.vercel.app/tools/aggregate_sentiment"
+        },
+        {
+          "@type": "Offer",
+          "name": "calculate_risk_score",
+          "description": "Multi-factor crypto risk assessment combining volatility, liquidity, market cap, and BTC correlation ($0.03 USDC on Base via x402).",
+          "price": "0.03",
+          "priceCurrency": "USD",
+          "url": "https://alpha-sentinel-mcp.vercel.app/tools/calculate_risk_score"
+        },
+        {
+          "@type": "Offer",
+          "name": "generate_market_report",
+          "description": "Comprehensive daily, weekly, or monthly executive market intelligence synthesis ($0.15 USDC on Base via x402).",
+          "price": "0.15",
+          "priceCurrency": "USD",
+          "url": "https://alpha-sentinel-mcp.vercel.app/tools/generate_market_report"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Alpha Sentinel Autonomous Trading Data & MCP Tool Catalog",
+        "url": "https://kwizzlesurp.com/.well-known/mcp.json"
+      }
+    },
+    {
+      "@type": ["SoftwareApplication", "Service"],
       "@id": "https://kwizzlesurp.com/#application",
       "name": "Kwizzle A2A Commerce & Compliance Gateway",
-      "applicationCategory": "DeveloperApplication, FinancialApplication",
+      "applicationCategory": "API Service",
+      "serviceType": "API Service",
+      "category": "Financial Market Analysis",
       "operatingSystem": "Web, Node.js, Python, Model Context Protocol (MCP)",
       "url": "https://kwizzlesurp.com/",
       "author": {

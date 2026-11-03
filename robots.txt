@@ -1,49 +1,85 @@
 # robots.txt for https://kwizzlesurp.com/
 # Production crawler directives & autonomous AI agent discovery configuration
 
-# Global web crawlers
-User-agent: *
+# x402 Protocol & Agent Commerce Indexers
+User-agent: x402
+User-agent: x402-bot
+User-agent: x402scan
+User-agent: AgentCash
 Allow: /
-Disallow: /api/private/
-Disallow: /ops/
+Allow: /.well-known/mcp.json
+Allow: /.well-known/mcp
+Allow: /.well-known/x402
+Allow: /.well-known/agent-card.json
+Allow: /.well-known/agent.json
+Allow: /docs/
+Allow: /docs
+Allow: /llms.txt
+
+# Google Search & Gemini AI Crawlers
+User-agent: Googlebot
+User-agent: Google-Extended
+Allow: /
+Allow: /.well-known/mcp.json
+Allow: /.well-known/mcp
+Allow: /.well-known/x402
+Allow: /.well-known/agent-card.json
+Allow: /.well-known/agent.json
+Allow: /docs/
+Allow: /docs
+Allow: /llms.txt
 
 # OpenAI crawlers (GPTBot, SearchBot)
 User-agent: GPTBot
+User-agent: OAI-SearchBot
 Allow: /
 Allow: /llms.txt
+Allow: /.well-known/mcp.json
 Allow: /.well-known/agent-card.json
 Allow: /.well-known/agent.json
 Allow: /.well-known/mcp
 Allow: /.well-known/x402
-
-User-agent: OAI-SearchBot
-Allow: /
+Allow: /docs/
+Allow: /docs
 
 # Anthropic crawler
 User-agent: ClaudeBot
 Allow: /
 Allow: /llms.txt
+Allow: /.well-known/mcp.json
 Allow: /.well-known/agent-card.json
 Allow: /.well-known/agent.json
+Allow: /docs/
+Allow: /docs
 
 # Perplexity crawler
 User-agent: PerplexityBot
 Allow: /
 Allow: /llms.txt
+Allow: /.well-known/mcp.json
 Allow: /.well-known/agent-card.json
+Allow: /docs/
+Allow: /docs
 
 # Apple Intelligence crawler
 User-agent: Applebot-Extended
 Allow: /
 
-# Machine-Readable Manifests & Endpoints
+# Global web crawlers
+User-agent: *
+Allow: /
 Allow: /llms.txt
+Allow: /.well-known/mcp.json
 Allow: /.well-known/agent-card.json
 Allow: /.well-known/agent.json
 Allow: /.well-known/mcp
 Allow: /.well-known/x402
 Allow: /.well-known/funding.json
+Allow: /docs/
+Allow: /docs
 Allow: /us/cities
+Disallow: /api/private/
+Disallow: /ops/
 
 # XML Sitemap Pointer
 Sitemap: https://kwizzlesurp.com/sitemap.xml

@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="base:app_id" content="6a7018e2a8c4f2b6db3b3e71" />
-    <title>Kwizz — Keith Severson · x402 &amp; Agent Commerce</title>
-    <meta name="description" content="Keith Severson (Kwizz) builds x402 micropayment infrastructure, MCP servers, and agent-to-agent commerce tools at Sevtech.">
-    <meta property="og:title" content="Kwizz — x402 &amp; Agent Commerce">
-    <meta property="og:description" content="Projects and gateway for HTTP 402 micropayments on Base, MCP, and A2A discovery.">
+    <title>Kwizz — Keith Severson · Predictive Crypto Intelligence Hub for AI Agents &amp; x402 Commerce</title>
+    <meta name="description" content="Predictive Crypto Intelligence Hub for AI Agents. Keith Severson (Kwizz) builds Predictive Alpha, On-chain Market Intelligence, x402 Monetized API, and Autonomous Trading Data infrastructure on Base.">
+    <meta name="keywords" content="Predictive Alpha, On-chain Market Intelligence, x402 Monetized API, Autonomous Trading Data, Financial Market Analysis, MCP Server, Base USDC, Keith Severson, Kwizz">
+    <meta property="og:title" content="Kwizz — Predictive Crypto Intelligence Hub for AI Agents · x402 &amp; Agent Commerce">
+    <meta property="og:description" content="Predictive Alpha, On-chain Market Intelligence, x402 Monetized API, and Autonomous Trading Data for AI agents on Base.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kwizzlesurp.com/">
     <meta property="og:image" content="https://kwizzlesurp.com/assets/og-image.png">
@@ -49,15 +50,94 @@
           },
           "sameAs": [
             "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
+            "https://github.com/kwizzlesurp10-ctrl/alpha-sentinel-mcp",
             "https://smithery.ai/server/kwizzlesurp10/x402-mcp",
-            "https://x402-mcp.onrender.com"
+            "https://x402-mcp.onrender.com",
+            "https://alpha-sentinel-mcp.vercel.app"
           ]
         },
         {
-          "@type": "SoftwareApplication",
+          "@type": ["SoftwareApplication", "Service"],
+          "@id": "https://kwizzlesurp.com/#alpha-sentinel",
+          "name": "Alpha Sentinel — Predictive Crypto Intelligence Hub for AI Agents",
+          "alternateName": "Alpha Sentinel Market Intelligence MCP",
+          "applicationCategory": "API Service",
+          "applicationSubCategory": "FinanceApplication",
+          "serviceType": "API Service",
+          "category": "Financial Market Analysis",
+          "operatingSystem": "All (HTTP, JSON-RPC 2.0, MCP, x402, REST)",
+          "url": "https://kwizzlesurp.com/",
+          "documentation": "https://kwizzlesurp.com/docs/",
+          "author": {
+            "@id": "https://kwizzlesurp.com/#organization"
+          },
+          "provider": {
+            "@id": "https://kwizzlesurp.com/#organization"
+          },
+          "description": "Alpha Sentinel is an institutional-grade API Service providing Financial Market Analysis, Predictive Alpha, On-chain Market Intelligence, x402 Monetized API access, and Autonomous Trading Data for AI agents and quantitative trading systems.",
+          "keywords": "Predictive Alpha, On-chain Market Intelligence, x402 Monetized API, Autonomous Trading Data, Financial Market Analysis, AI Agents, MCP Server",
+          "featureList": [
+            "fetch_price: Real-time cryptocurrency spot price, 24h change, and volume lookup ($0.005 USDC)",
+            "analyze_volatility: Statistical Z-score anomaly detection across configurable minute windows ($0.02 USDC)",
+            "aggregate_sentiment: Multi-source social & news sentiment aggregation across Twitter/X, Reddit, Telegram, and news ($0.01 USDC)",
+            "calculate_risk_score: Multi-factor asset & portfolio risk scoring weighting volatility, liquidity, market cap, and BTC correlation ($0.03 USDC)",
+            "generate_market_report: Full-spectrum daily, weekly, and monthly executive intelligence synthesis ($0.15 USDC)"
+          ],
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "fetch_price",
+              "description": "Real-time cryptocurrency spot price, 24h change, and trading volume lookup ($0.005 USDC on Base via x402).",
+              "price": "0.005",
+              "priceCurrency": "USD",
+              "url": "https://alpha-sentinel-mcp.vercel.app/tools/fetch_price"
+            },
+            {
+              "@type": "Offer",
+              "name": "analyze_volatility",
+              "description": "Statistical Z-score volatility anomaly detection across configurable windows ($0.02 USDC on Base via x402).",
+              "price": "0.02",
+              "priceCurrency": "USD",
+              "url": "https://alpha-sentinel-mcp.vercel.app/tools/analyze_volatility"
+            },
+            {
+              "@type": "Offer",
+              "name": "aggregate_sentiment",
+              "description": "Multi-source crypto sentiment aggregation across Twitter/X, Reddit, Telegram, and news ($0.01 USDC on Base via x402).",
+              "price": "0.01",
+              "priceCurrency": "USD",
+              "url": "https://alpha-sentinel-mcp.vercel.app/tools/aggregate_sentiment"
+            },
+            {
+              "@type": "Offer",
+              "name": "calculate_risk_score",
+              "description": "Multi-factor crypto risk assessment combining volatility, liquidity, market cap, and BTC correlation ($0.03 USDC on Base via x402).",
+              "price": "0.03",
+              "priceCurrency": "USD",
+              "url": "https://alpha-sentinel-mcp.vercel.app/tools/calculate_risk_score"
+            },
+            {
+              "@type": "Offer",
+              "name": "generate_market_report",
+              "description": "Comprehensive daily, weekly, or monthly executive market intelligence synthesis ($0.15 USDC on Base via x402).",
+              "price": "0.15",
+              "priceCurrency": "USD",
+              "url": "https://alpha-sentinel-mcp.vercel.app/tools/generate_market_report"
+            }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Alpha Sentinel Autonomous Trading Data & MCP Tool Catalog",
+            "url": "https://kwizzlesurp.com/.well-known/mcp.json"
+          }
+        },
+        {
+          "@type": ["SoftwareApplication", "Service"],
           "@id": "https://kwizzlesurp.com/#application",
           "name": "Kwizzle A2A Commerce & Compliance Gateway",
-          "applicationCategory": "DeveloperApplication, FinancialApplication",
+          "applicationCategory": "API Service",
+          "serviceType": "API Service",
+          "category": "Financial Market Analysis",
           "operatingSystem": "Web, Node.js, Python, Model Context Protocol (MCP)",
           "url": "https://kwizzlesurp.com/",
           "author": {
@@ -110,9 +190,11 @@
 
             <nav class="hidden md:flex items-center gap-1 text-sm text-zinc-400" aria-label="Primary">
                 <a href="#projects" class="px-3 py-2 rounded-lg hover:text-white hover:bg-white/5 transition-colors focus-ring">Projects</a>
+                <a href="#alpha-sentinel-tools" class="px-3 py-2 rounded-lg hover:text-white hover:bg-white/5 transition-colors focus-ring">Alpha Sentinel</a>
+                <a href="/docs" class="px-3 py-2 rounded-lg hover:text-white hover:bg-white/5 transition-colors focus-ring">Docs &amp; Playbooks</a>
                 <a href="#features" class="px-3 py-2 rounded-lg hover:text-white hover:bg-white/5 transition-colors focus-ring">Gateway</a>
                 <a href="https://smithery.ai/servers/kwizzlesurp10/x402-mcp" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg hover:text-sky-300 hover:bg-white/5 transition-colors focus-ring">Smithery</a>
-                <a href="https://x402-mcp.onrender.com/.well-known/mcp/server-card.json" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg font-mono text-xs hover:text-white hover:bg-white/5 transition-colors focus-ring">server-card.json</a>
+                <a href="/.well-known/mcp.json" class="px-3 py-2 rounded-lg font-mono text-xs hover:text-white hover:bg-white/5 transition-colors focus-ring">mcp.json</a>
             </nav>
 
             <div class="flex items-center gap-2">
@@ -128,7 +210,10 @@
         <div id="mobile-nav" class="hidden md:hidden border-t border-white/5 bg-ink/95 backdrop-blur-xl" role="navigation" aria-label="Mobile">
             <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-1 text-sm">
                 <a href="#projects" class="py-2.5 px-3 rounded-lg hover:bg-white/5">Projects</a>
+                <a href="#alpha-sentinel-tools" class="py-2.5 px-3 rounded-lg hover:bg-white/5">Alpha Sentinel</a>
+                <a href="/docs" class="py-2.5 px-3 rounded-lg hover:bg-white/5">Docs &amp; Playbooks</a>
                 <a href="#features" class="py-2.5 px-3 rounded-lg hover:bg-white/5">Gateway</a>
+                <a href="/.well-known/mcp.json" class="py-2.5 px-3 rounded-lg font-mono text-xs hover:bg-white/5">/.well-known/mcp.json</a>
                 <a href="https://smithery.ai/servers/kwizzlesurp10/x402-mcp" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-lg hover:bg-white/5">Smithery</a>
                 <a href="https://x402-mcp.onrender.com" class="py-2.5 px-3 rounded-lg text-violet-300 font-medium">Open storefront</a>
             </div>
@@ -139,17 +224,29 @@
         <section class="max-w-6xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-16 sm:pb-24">
             <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
                 <div class="animate-fade-up">
-                    <p class="text-sm font-mono text-violet-200 tracking-wide uppercase mb-4">Sevtech · Base · x402</p>
+                    <p class="text-sm font-mono text-violet-200 tracking-wide uppercase mb-4">Sevtech · Base · x402 · Keith Severson</p>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-6 text-zinc-50">
-                        Keith Severson
-                        <span class="block text-2xl sm:text-3xl font-medium text-zinc-300 mt-3">Building agent commerce on HTTP&nbsp;402</span>
+                        Predictive Crypto Intelligence Hub for AI Agents.
+                        <span class="block text-2xl sm:text-3xl font-medium text-zinc-300 mt-3">Keith Severson — Building agent commerce on HTTP&nbsp;402</span>
                     </h1>
-                    <p class="text-lg text-zinc-300 leading-relaxed max-w-2xl mb-10">
-                        I ship MCP servers, paid API surfaces, and operator tooling so AI agents can discover services, settle in USDC on Base, and collaborate over A2A — without fake demos or hand-wavy integrations.
+                    <p class="text-lg text-zinc-300 leading-relaxed max-w-2xl mb-6">
+                        I ship MCP servers, paid API surfaces, and operator tooling so AI agents can discover services, settle in USDC on Base, and collaborate over A2A — delivering <strong>Predictive Alpha</strong>, <strong>On-chain Market Intelligence</strong>, <strong>x402 Monetized API</strong> access, and <strong>Autonomous Trading Data</strong> without fake demos or hand-wavy integrations.
                     </p>
+                    <div class="flex flex-wrap gap-2 mb-8 text-xs font-mono">
+                        <span class="px-2.5 py-1 rounded-full bg-violet-500/15 text-violet-200 border border-violet-500/20">Predictive Alpha</span>
+                        <span class="px-2.5 py-1 rounded-full bg-sky-500/15 text-sky-200 border border-sky-500/20">On-chain Market Intelligence</span>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-500/20">x402 Monetized API</span>
+                        <span class="px-2.5 py-1 rounded-full bg-violet-500/15 text-violet-200 border border-violet-500/20">Autonomous Trading Data</span>
+                    </div>
                     <div class="flex flex-col sm:flex-row flex-wrap gap-3">
                         <a href="#projects" class="inline-flex justify-center items-center gap-2 px-6 py-3.5 rounded-xl font-semibold bg-white text-ink hover:bg-zinc-200 transition focus-ring">
                             View projects
+                        </a>
+                        <a href="#alpha-sentinel-tools" class="inline-flex justify-center items-center gap-2 px-6 py-3.5 rounded-xl font-semibold border border-violet-500/30 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20 transition focus-ring">
+                            Alpha Sentinel Tools
+                        </a>
+                        <a href="/docs" class="inline-flex justify-center items-center gap-2 px-6 py-3.5 rounded-xl font-semibold border border-white/15 bg-white/5 hover:bg-white/10 transition focus-ring">
+                            Use-Case Playbooks
                         </a>
                         <a href="https://github.com/kwizzlesurp10-ctrl" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 px-6 py-3.5 rounded-xl font-semibold border border-white/15 bg-white/5 hover:bg-white/10 transition focus-ring">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
@@ -261,12 +358,108 @@
                                 <p class="text-sm text-zinc-300 leading-relaxed flex-grow">Pay-per-call crypto market intelligence over x402 on Base — live prices, volatility, sentiment, risk scores, and market reports via HTTP, MCP, and A2A.</p>
                                 <div class="mt-4 flex flex-wrap gap-3 text-sm font-medium">
                                     <a href="https://alpha-sentinel-mcp.vercel.app" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:text-sky-200 focus-ring rounded">Live →</a>
+                                    <a href="/docs" class="text-violet-300 hover:text-violet-200 focus-ring rounded">Playbooks</a>
                                     <a href="https://github.com/kwizzlesurp10-ctrl/alpha-sentinel-mcp" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-zinc-300 focus-ring rounded">GitHub</a>
                                 </div>
                             </div>
                         </article>
                     </li>
                 </ul>
+            </div>
+        </section>
+
+        <section id="alpha-sentinel-tools" class="py-20 sm:py-24 border-t border-white/5" aria-labelledby="alpha-sentinel-heading">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+                    <div>
+                        <p class="text-xs font-mono text-violet-300 uppercase tracking-wider mb-2">Predictive Alpha · On-chain Market Intelligence · x402 Monetized API</p>
+                        <h2 id="alpha-sentinel-heading" class="text-3xl sm:text-4xl font-bold tracking-tight">Alpha Sentinel Tool Directory &amp; Use-Case Playbooks</h2>
+                        <p class="text-zinc-300 mt-2 max-w-2xl">
+                            Autonomous Trading Data &amp; Financial Market Analysis tools settled per call in USDC on Base (`eip155:8453`). Discover schemas via <a href="/.well-known/mcp.json" class="text-sky-300 hover:text-sky-200 underline font-mono text-xs">/.well-known/mcp.json</a>.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="/docs" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 transition focus-ring">
+                            Documentation Hub (/docs)
+                        </a>
+                        <a href="/.well-known/mcp.json" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono rounded-lg border border-violet-500/30 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20 transition focus-ring">
+                            /.well-known/mcp.json
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <article class="rounded-2xl border border-white/10 bg-ink-soft p-6 flex flex-col">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <code class="text-sm font-mono font-semibold text-violet-300">fetch_price</code>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-500/20">$0.005 USDC</span>
+                        </div>
+                        <p class="text-sm text-zinc-300 leading-relaxed flex-grow">
+                            Real-time cryptocurrency spot price, 24-hour percentage change, and 24-hour trading volume lookup for high-frequency Autonomous Trading Data checks.
+                        </p>
+                    </article>
+
+                    <article class="rounded-2xl border border-white/10 bg-ink-soft p-6 flex flex-col">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <code class="text-sm font-mono font-semibold text-violet-300">analyze_volatility</code>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-200 border border-sky-500/20">$0.02 USDC</span>
+                        </div>
+                        <p class="text-sm text-zinc-300 leading-relaxed flex-grow">
+                            Statistical Z-score volatility anomaly detection across configurable minute windows (1–1440m) and sigma thresholds (`NORMAL`, `MODERATE`, `HIGH`, `CRITICAL`).
+                        </p>
+                    </article>
+
+                    <article class="rounded-2xl border border-white/10 bg-ink-soft p-6 flex flex-col">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <code class="text-sm font-mono font-semibold text-violet-300">aggregate_sentiment</code>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-200 border border-sky-500/20">$0.01 USDC</span>
+                        </div>
+                        <p class="text-sm text-zinc-300 leading-relaxed flex-grow">
+                            Multi-source crypto sentiment aggregation across Twitter/X, Reddit, Telegram, and news feeds (-1.0 to +1.0) with momentum shift detection for Predictive Alpha.
+                        </p>
+                    </article>
+
+                    <article class="rounded-2xl border border-white/10 bg-ink-soft p-6 flex flex-col">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <code class="text-sm font-mono font-semibold text-violet-300">calculate_risk_score</code>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-200 border border-sky-500/20">$0.03 USDC</span>
+                        </div>
+                        <p class="text-sm text-zinc-300 leading-relaxed flex-grow">
+                            Multi-factor asset and portfolio risk assessment weighting volatility (40%), liquidity (25%), market cap tier (20%), and BTC correlation (15%) on a 0–1 scale.
+                        </p>
+                    </article>
+
+                    <article class="rounded-2xl border border-white/10 bg-ink-soft p-6 flex flex-col md:col-span-2 lg:col-span-2">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <code class="text-sm font-mono font-semibold text-violet-300">generate_market_report</code>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-violet-500/15 text-violet-200 border border-violet-500/20">$0.15 USDC</span>
+                        </div>
+                        <p class="text-sm text-zinc-300 leading-relaxed flex-grow">
+                            Executive On-chain Market Intelligence report synthesizing spot price action, Z-score volatility regimes, social sentiment momentum, and multi-factor risk scores into daily, weekly, or monthly strategic briefings.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="rounded-2xl border border-white/10 bg-ink-soft/80 p-6 sm:p-8">
+                    <h3 class="text-lg font-semibold mb-4">Quantitative Integration Playbooks</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="/docs/automate-volatility-alerts.html" class="group block rounded-xl border border-white/10 bg-ink p-5 hover:border-violet-400/40 transition focus-ring">
+                            <span class="text-xs font-mono text-violet-300 uppercase">Playbook 01</span>
+                            <h4 class="text-base font-semibold mt-1 mb-2 group-hover:text-violet-300 transition">Automate Crypto Volatility Alerts</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">Statistical Z-score regime detection with `analyze_volatility` and `calculate_risk_score` for autonomous circuit breakers.</p>
+                        </a>
+                        <a href="/docs/integrate-predictive-alpha.html" class="group block rounded-xl border border-white/10 bg-ink p-5 hover:border-sky-400/40 transition focus-ring">
+                            <span class="text-xs font-mono text-sky-300 uppercase">Playbook 02</span>
+                            <h4 class="text-base font-semibold mt-1 mb-2 group-hover:text-sky-300 transition">Integrate Predictive Alpha Feeds</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">Wire MCP JSON-RPC 2.0 and x402 Base USDC micropayments into LangChain, Claude, and autonomous execution loops.</p>
+                        </a>
+                        <a href="/docs/reduce-slippage-sentiment.html" class="group block rounded-xl border border-white/10 bg-ink p-5 hover:border-emerald-400/40 transition focus-ring">
+                            <span class="text-xs font-mono text-emerald-300 uppercase">Playbook 03</span>
+                            <h4 class="text-base font-semibold mt-1 mb-2 group-hover:text-emerald-300 transition">Reduce Slippage with Sentiment</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">Combine `aggregate_sentiment` and `calculate_risk_score` to split orders into TWAP tranches before liquidity thins.</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -353,6 +546,8 @@
                 <span class="block mt-1 text-xs">© 2026</span>
             </div>
             <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2" aria-label="Footer">
+                <a href="/docs" class="hover:text-zinc-300 transition focus-ring rounded">Docs</a>
+                <a href="/.well-known/mcp.json" class="hover:text-zinc-300 transition focus-ring rounded">mcp.json</a>
                 <a href="https://x402-mcp.onrender.com/.well-known/mcp" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition focus-ring rounded">Manifest</a>
                 <a href="https://x402-mcp.onrender.com/health" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition focus-ring rounded">Health</a>
                 <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition focus-ring rounded">MCP Spec</a>
