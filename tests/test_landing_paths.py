@@ -20,6 +20,7 @@ def test_sitemap_is_xml_not_html() -> None:
     root = ET.fromstring(raw)
     locs = [el.text for el in root.iter() if el.tag.endswith("loc")]
     assert "https://kwizzlesurp.com/" in locs
+    assert "https://kwizzlesurp.com/packs/" in locs
 
 
 def test_favicon_is_binary_icon() -> None:
@@ -38,11 +39,24 @@ def test_status_widget_reads_health_not_schema() -> None:
     assert "config.EVM_PRIVATE_KEY" not in html
 
 
-def test_render_routes_do_not_swallow_static_files() -> None:
+def test_render_routes_keep_mcp_handoffs() -> None:
     yaml = (ROOT / "render.yaml").read_text(encoding="utf-8")
     assert "destination: /index.html" not in yaml
-    assert "source: /health" in yaml
-    assert "x402-mcp.onrender.com/health" in yaml
+    assert "runtime: docker" in yaml
+    assert "x402-mcp.onrender.com/.well-known/mcp" in yaml
+
+
+def test_packs_gallery_page_exists() -> None:
+    html = (ROOT / "packs" / "index.html").read_text(encoding="utf-8")
+    assert "/sample-packs/real-estate-listing-descriptions/pack.pdf" in html
+    assert "POST /api/packs" in html
+
+
+def test_sample_pack_artifacts_committed() -> None:
+    sample = ROOT / "sample-packs" / "real-estate-listing-descriptions"
+    assert (sample / "input.json").is_file()
+    assert (sample / "pack.pdf").read_bytes()[:4] == b"%PDF"
+    assert (sample / "manifest.json").is_file()
 
 
 def test_health_and_manifest_handoff_pages_exist() -> None:

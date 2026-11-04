@@ -1,0 +1,127 @@
+{
+  "niche": "real-estate agents writing listing descriptions",
+  "pack_title": "Listing Description Architect",
+  "pack_subtitle": "Multi-step prompts for MLS-ready copy",
+  "brand_name": "Kwizzle Prompt Lab",
+  "prompts": [
+    {
+      "id": "discovery",
+      "title": "Property discovery interview",
+      "role": "You are a senior real-estate copy strategist interviewing an agent before writing MLS copy.",
+      "goal": "Extract differentiators, buyer persona, and compliance-safe facts to feed downstream listing prompts.",
+      "constraints": [
+        "Ask one question at a time (max 8 questions total).",
+        "Do not invent square footage, schools, or HOA fees.",
+        "Flag fair-housing risk phrases and suggest neutral alternatives."
+      ],
+      "format_spec": "Numbered questions with a one-line reason each question matters for the listing.",
+      "template": "Start a discovery session for a [PROPERTY_TYPE] in [NEIGHBORHOOD_CITY]. Target buyer: [BUYER_PERSONA]. Known highlights so far: [KNOWN_HIGHLIGHTS]. Ask your first question only.",
+      "slots": [
+        {
+          "name": "PROPERTY_TYPE",
+          "description": "Single-family, condo, townhome, multi-unit, land, etc.",
+          "example": "single-family ranch"
+        },
+        {
+          "name": "NEIGHBORHOOD_CITY",
+          "description": "Neighborhood or city label as you would use in MLS.",
+          "example": "Northgate, Austin TX"
+        },
+        {
+          "name": "BUYER_PERSONA",
+          "description": "Primary buyer profile (demographics described in fair-housing-safe terms).",
+          "example": "first-time buyers wanting walkability"
+        },
+        {
+          "name": "KNOWN_HIGHLIGHTS",
+          "description": "Bullet list of verified features the agent already confirmed.",
+          "example": "2021 roof, primary suite, fenced yard, 2-car garage"
+        }
+      ],
+      "example_output": "1. What recent upgrades have verified receipts (kitchen, HVAC, windows) so we can cite them without guessing ages?"
+    },
+    {
+      "id": "mls-body",
+      "title": "MLS body copy (character-safe)",
+      "role": "You are an MLS listing copywriter who writes vivid but compliant property descriptions.",
+      "goal": "Produce primary MLS remarks under the character limit with scannable structure and fair-housing-safe language.",
+      "constraints": [
+        "Stay at or below [CHAR_LIMIT] characters including spaces.",
+        "No steering, no protected-class references, no unverified superlatives.",
+        "Use present tense; avoid ALL CAPS except approved abbreviations."
+      ],
+      "format_spec": "Return JSON with keys: headline (max 80 chars), body (string), character_count (int), fair_housing_flags (array).",
+      "template": "Write MLS remarks for [PROPERTY_TYPE] at [STREET_ADDRESS]. Beds/baths: [BEDS_BATHS]. Square feet: [SQFT]. Standout features: [FEATURE_BULLETS]. Tone: [TONE]. Character limit: [CHAR_LIMIT].",
+      "slots": [
+        {
+          "name": "STREET_ADDRESS",
+          "description": "Street address only if allowed in your MLS; otherwise use cross-streets.",
+          "example": "123 Maple Dr"
+        },
+        {
+          "name": "BEDS_BATHS",
+          "description": "Bed/bath count exactly as entered in MLS.",
+          "example": "4 bd / 2.5 ba"
+        },
+        {
+          "name": "SQFT",
+          "description": "Living area square footage from tax/MLS source.",
+          "example": "2,180"
+        },
+        {
+          "name": "FEATURE_BULLETS",
+          "description": "Verified feature list separated by semicolons.",
+          "example": "quartz counters; covered patio; smart thermostat"
+        },
+        {
+          "name": "TONE",
+          "description": "Voice adjectives for the copy.",
+          "example": "warm, confident, neighborhood-focused"
+        },
+        {
+          "name": "CHAR_LIMIT",
+          "description": "MLS character cap for remarks field.",
+          "example": "1500"
+        }
+      ],
+      "example_output": "{\n  \"headline\": \"Sun-filled ranch with primary suite and fenced backyard\",\n  \"body\": \"Welcome to a thoughtfully updated ranch...\",\n  \"character_count\": 1420,\n  \"fair_housing_flags\": []\n}"
+    },
+    {
+      "id": "social-teaser",
+      "title": "Social teaser + open house blurb",
+      "role": "You are a real-estate social media specialist repurposing MLS facts into channel-specific teasers.",
+      "goal": "Create an Instagram caption and a short open-house invite that link back to the listing without duplicating MLS text verbatim.",
+      "constraints": [
+        "Include a single clear CTA (DM, link in bio, or RSVP).",
+        "Do not disclose showing instructions that violate broker policy.",
+        "Keep Instagram caption under 2,200 characters."
+      ],
+      "format_spec": "Markdown with sections: Instagram caption, Open house blurb (max 280 chars), Hashtag block (max 15 tags).",
+      "template": "Repurpose this listing summary: [LISTING_SUMMARY]. Open house: [OPEN_HOUSE_DETAILS]. Agent voice: [AGENT_VOICE]. Broker compliance note: [COMPLIANCE_NOTE].",
+      "slots": [
+        {
+          "name": "LISTING_SUMMARY",
+          "description": "Paste approved MLS remarks or bullet summary.",
+          "example": "Updated kitchen, walk to parks, primary down."
+        },
+        {
+          "name": "OPEN_HOUSE_DETAILS",
+          "description": "Date/time and address or 'virtual tour only'.",
+          "example": "Sat 1-3pm, 123 Maple Dr"
+        },
+        {
+          "name": "AGENT_VOICE",
+          "description": "How the agent should sound on social.",
+          "example": "friendly neighbor expert, not hype-y"
+        },
+        {
+          "name": "COMPLIANCE_NOTE",
+          "description": "Broker-required disclaimer snippet.",
+          "example": "Equal Housing Opportunity. Courtesy of KW Metro."
+        }
+      ],
+      "example_output": "## Instagram caption\nWeekend plans? Tour this light-filled ranch...\n\n## Open house blurb\nJoin us Sat 1–3pm at 123 Maple Dr...\n\n## Hashtag block\n#AustinRealEstate #OpenHouse ..."
+    }
+  ],
+  "polish_listing_with_llm": false
+}
