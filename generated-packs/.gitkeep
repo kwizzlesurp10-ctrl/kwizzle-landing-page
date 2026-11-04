@@ -1,0 +1,2 @@
+generated-packs/*
+!generated-packs/.gitkeep

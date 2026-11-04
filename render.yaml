@@ -1,15 +1,15 @@
 services:
   - type: web
     name: kwizzle-landing-page
-    env: static
+    runtime: docker
     repo: https://github.com/kwizzlesurp10-ctrl/kwizzle-landing-page
     branch: main
-    staticPublishPath: .
+    dockerfilePath: ./Dockerfile
     autoDeploy: true
+    envVars:
+      - key: PACK_PIPELINE_LLM_POLISH
+        value: "false"
     routes:
-      - type: redirect
-        source: /health
-        destination: https://x402-mcp.onrender.com/health
       - type: redirect
         source: /.well-known/mcp
         destination: https://x402-mcp.onrender.com/.well-known/mcp

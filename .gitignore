@@ -1,4 +1,9 @@
 node_modules/
 .pytest_cache/
 tests/__pycache__/
+api/__pycache__/
+api/pack_pipeline/__pycache__/
+generated-packs/*
+!generated-packs/.gitkeep
 lighthouse-*.json
+.venv/

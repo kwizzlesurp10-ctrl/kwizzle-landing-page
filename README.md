@@ -37,6 +37,36 @@ docker run -d --name kwizzle-landing-page -p 8080:80 kwizzle-landing-page
 ---
 
 ## Hosting on Render
-This repository is configured to be deployed as a **Static Site** on Render.
-* **Build Command**: `(none)`
-* **Publish Directory**: `.`
+
+**Production (`https://kwizzlesurp.com`)** deploys from this repo on Render as a **Docker Web Service** (`render.yaml`, `Dockerfile`). nginx serves the static site; uvicorn serves the FastAPI prompt-pack API behind `/api/*`.
+
+If the dashboard still shows a **Static Site**, migrate to **Web → Docker** (apply the blueprint or recreate the service) so `POST /api/packs` works on the same host. Cloudflare DNS can stay pointed at Render.
+
+Optional env vars: `OPENAI_API_KEY`, `PACK_PIPELINE_LLM_POLISH=true`, `OPENAI_MODEL` (default `gpt-4o-mini`). The pipeline runs without them.
+
+---
+
+## Prompt pack pipeline
+
+Extension for autonomous sellable prompt packs: branded PDF, cover SVG, marketplace listing copy, and JSON manifest.
+
+**Sample (committed):** `sample-packs/real-estate-listing-descriptions/` — view at [/packs/](http://localhost:8080/packs/) when running locally.
+
+**API:** `POST /api/packs` with body like `sample-packs/real-estate-listing-descriptions/input.json`.
+
+**MCP for agents:** `POST /api/mcp` with JSON-RPC `tools/list` / `tools/call` (`package_prompt_pack`).
+
+```bash
+pip install -r requirements.txt
+pytest
+python scripts/generate_sample_pack.py   # refresh committed sample artifacts
+```
+
+| Route | Purpose |
+|-------|---------|
+| `POST /api/packs` | Package a prompt pack; returns manifest + `/generated-packs/{id}/` links |
+| `GET /api/packs/sample` | Sample manifest |
+| `POST /api/mcp` | MCP JSON-RPC shim |
+| `GET /packs/` | Sample pack preview page |
+
+Structured JSON logs record per-run `duration_ms` and token usage when LLM polish is enabled.

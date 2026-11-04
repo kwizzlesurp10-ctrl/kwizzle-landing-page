@@ -1,0 +1,61 @@
+from __future__ import annotations
+
+import html
+import xml.etree.ElementTree as ET
+
+from api.pack_pipeline.schema import PackPipelineInput
+
+
+def _escape(text: str) -> str:
+    return html.escape(text, quote=True)
+
+
+def render_cover_svg(pack: PackPipelineInput) -> str:
+    title = pack.pack_title
+    subtitle = pack.pack_subtitle or pack.niche
+    brand = pack.brand_name
+    prompt_count = len(pack.prompts)
+
+    # Split long titles across two lines (~32 chars)
+    words = title.split()
+    line1_words: list[str] = []
+    line2_words: list[str] = []
+    for word in words:
+        candidate = " ".join(line1_words + [word])
+        if len(candidate) <= 32 or not line1_words:
+            line1_words.append(word)
+        else:
+            line2_words.append(word)
+    line1 = " ".join(line1_words) if line1_words else title[:32]
+    line2 = " ".join(line2_words)
+
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">{_escape(title)}</title>
+  <desc id="desc">Cover for {_escape(pack.niche)} prompt pack</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="55%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#022c22"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#10b981" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="48" y="48" width="1104" height="534" rx="24" fill="none" stroke="#10b981" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="96" y="120" fill="#34d399" font-family="Instrument Sans, system-ui, sans-serif" font-size="22" font-weight="600" letter-spacing="0.12em">{_escape(brand.upper())}</text>
+  <text x="96" y="260" fill="#f8fafc" font-family="Instrument Sans, system-ui, sans-serif" font-size="56" font-weight="700">{_escape(line1)}</text>
+"""
+    if line2:
+        svg += f'  <text x="96" y="330" fill="#f8fafc" font-family="Instrument Sans, system-ui, sans-serif" font-size="56" font-weight="700">{_escape(line2)}</text>\n'
+    y_sub = 400 if line2 else 330
+    svg += f"""  <text x="96" y="{y_sub}" fill="#94a3b8" font-family="IBM Plex Mono, monospace" font-size="24">{_escape(subtitle)}</text>
+  <text x="96" y="520" fill="#10b981" font-family="IBM Plex Mono, monospace" font-size="20">{prompt_count} PROMPTS · MULTI-STEP · [SLOT] READY</text>
+  <circle cx="1050" cy="520" r="8" fill="#10b981"/>
+  <text x="1070" y="528" fill="#64748b" font-family="IBM Plex Mono, monospace" font-size="18">INSTANT DOWNLOAD</text>
+</svg>"""
+    # Validate well-formed XML
+    ET.fromstring(svg)
+    return svg
