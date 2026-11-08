@@ -44,6 +44,8 @@ If the dashboard still shows a **Static Site**, migrate to **Web → Docker** (a
 
 Optional env vars: `OPENAI_API_KEY`, `PACK_PIPELINE_LLM_POLISH=true`, `OPENAI_MODEL` (default `gpt-4o-mini`). The pipeline runs without them.
 
+**X Ads conversion tracking (pixel `q8lud`):** base pixel is included on all static HTML pages; server reporting uses `X_PIXEL_TOKEN` and `X_CONVERSION_EVENTS` (see `.env.example` and `docs/x-conversion-tracking.md`). No credentials are committed; event IDs must be supplied before live API calls run.
+
 ---
 
 ## Prompt pack pipeline

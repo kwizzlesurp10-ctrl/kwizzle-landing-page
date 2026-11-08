@@ -9,6 +9,10 @@ services:
     envVars:
       - key: PACK_PIPELINE_LLM_POLISH
         value: "false"
+      - key: X_PIXEL_TOKEN
+        sync: false
+      - key: X_CONVERSION_EVENTS
+        sync: false
     routes:
       - type: redirect
         source: /.well-known/mcp

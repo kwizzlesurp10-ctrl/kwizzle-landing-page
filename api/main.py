@@ -13,6 +13,8 @@ from pydantic import ValidationError
 
 from api.pack_pipeline.orchestrator import package_prompt_pack
 from api.pack_pipeline.schema import PackPipelineInput, ProductManifest
+from api.x_conversion.reporting import report_server_conversion
+from api.x_conversion.result import Err
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED_ROOT = ROOT / "generated-packs"
@@ -40,8 +42,42 @@ async def health() -> PlainTextResponse:
     return PlainTextResponse("healthy\n")
 
 
+def _client_ip(request: Request) -> str | None:
+    forwarded = request.headers.get("x-forwarded-for")
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    if request.client:
+        return request.client.host
+    return None
+
+
+async def _maybe_track_pack_created(request: Request, run_id: str) -> None:
+    """Server hook for pack_created — calls X Ads only when X_CONVERSION_EVENTS + X_PIXEL_TOKEN are set."""
+    twclid = request.cookies.get("kwizzle_twclid")
+    ua = request.headers.get("user-agent")
+    ip = _client_ip(request)
+    result = await report_server_conversion(
+        "pack_created",
+        conversion_id=f"pack:{run_id}",
+        event_source_url=str(request.url),
+        twclid=twclid,
+        ip_address=ip,
+        user_agent=ua,
+    )
+    if isinstance(result, Err) and result.error != "missing_pixel_token":
+        logger.warning(
+            json.dumps(
+                {
+                    "event": "x_conversion_pack_created_failed",
+                    "run_id": run_id,
+                    "reason": result.error,
+                }
+            )
+        )
+
+
 @app.post("/api/packs", response_model=ProductManifest)
-async def create_pack(body: PackPipelineInput) -> ProductManifest:
+async def create_pack(body: PackPipelineInput, request: Request) -> ProductManifest:
     run_dir = GENERATED_ROOT / str(uuid.uuid4())
     public_base = f"/generated-packs/{run_dir.name}"
     manifest, _artifacts = package_prompt_pack(
@@ -59,6 +95,10 @@ async def create_pack(body: PackPipelineInput) -> ProductManifest:
             }
         )
     )
+    try:
+        await _maybe_track_pack_created(request, run_dir.name)
+    except Exception:
+        logger.exception("x_conversion_pack_hook_error")
     return manifest
 
 
