@@ -1,0 +1,43 @@
+{
+  "x402Version": 2,
+  "name": "Kwizzle / SEVTECH agent commerce hub",
+  "description": "Discovery index of live x402 seller hosts. PayTo is the cashier on each resource, not this static origin. Buyers should fetch each host's /.well-known/x402 for live prices.",
+  "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+  "network": "eip155:8453",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "assetSymbol": "USDC",
+  "facilitator": "https://x402.org/facilitator",
+  "resources": [
+    {
+      "name": "x402-mcp city/storefront",
+      "origin": "https://x402-mcp.onrender.com",
+      "wellKnown": "https://x402-mcp.onrender.com/.well-known/x402",
+      "mcp": "https://x402-mcp.onrender.com/.well-known/mcp",
+      "a2a": "https://x402-mcp.onrender.com/.well-known/agent-card.json",
+      "sample": "https://x402-mcp.onrender.com/us/mn/property-check/sample",
+      "catalog": "https://x402-mcp.onrender.com/us/cities"
+    },
+    {
+      "name": "Alpha Sentinel",
+      "origin": "https://alpha-sentinel-mcp.vercel.app",
+      "wellKnown": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "mcp": "https://alpha-sentinel-mcp.vercel.app/.well-known/mcp.json",
+      "cheapest": {
+        "url": "https://alpha-sentinel-mcp.vercel.app/tools/fetch_price",
+        "amountUsdc": 0.005
+      }
+    },
+    {
+      "name": "x402 Crediting Swarm",
+      "origin": "https://x402-crediting-swarm.vercel.app",
+      "wellKnown": "https://x402-crediting-swarm.vercel.app/.well-known/x402",
+      "mcp": "https://x402-crediting-swarm.vercel.app/.well-known/mcp.json"
+    },
+    {
+      "name": "x402orcle",
+      "origin": "https://x402orcle.vercel.app",
+      "wellKnown": "https://x402orcle.vercel.app/.well-known/x402",
+      "mcp": "https://x402orcle.vercel.app/.well-known/mcp.json"
+    }
+  ]
+}

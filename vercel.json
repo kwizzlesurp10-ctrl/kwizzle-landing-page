@@ -1,0 +1,31 @@
+{
+  "rewrites": [
+    { "source": "/a2a", "destination": "/.well-known/agent-card.json" },
+    { "source": "/mcp", "destination": "/.well-known/mcp.json" },
+    { "source": "/mcp/mcp", "destination": "/.well-known/mcp.json" },
+    { "source": "/.well-known/mcp", "destination": "/.well-known/mcp.json" },
+    { "source": "/.well-known/x402", "destination": "/.well-known/x402.json" }
+  ],
+  "redirects": [
+    { "source": "/cities", "destination": "https://x402-mcp.onrender.com/us/cities", "statusCode": 307 },
+    { "source": "/us/cities", "destination": "https://x402-mcp.onrender.com/us/cities", "statusCode": 307 },
+    { "source": "/openapi.json", "destination": "https://x402-mcp.onrender.com/openapi.json", "statusCode": 307 }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=60" }
+      ]
+    },
+    {
+      "source": "/a2a",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    },
+    {
+      "source": "/mcp",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    }
+  ]
+}
