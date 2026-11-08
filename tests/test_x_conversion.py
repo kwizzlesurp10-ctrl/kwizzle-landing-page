@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
-import httpx
 import pytest
 
 from api.x_conversion.client import XConversionClient
@@ -19,23 +21,24 @@ from api.x_conversion.identifiers import (
 from api.x_conversion.registry import load_conversion_event_registry
 from api.x_conversion.reporting import report_server_conversion
 from api.x_conversion.result import Err, Ok
+from scripts.build_static_site import build_static_site
+from scripts.site_layout import (
+    discover_public_html_sources,
+    inject_x_pixel_before_head_close,
+    load_canonical_x_pixel_snippet,
+    strip_x_pixel_block,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 SNIPPET = ROOT / "snippets" / "x-conversion-tracking-base.html"
+X_PIXEL_MARKER_START = "<!-- X conversion tracking base code -->"
 
-HTML_PAGES = [
-    ROOT / "index.html",
-    ROOT / "packs" / "index.html",
-    ROOT / "health" / "index.html",
-    ROOT / ".well-known" / "mcp" / "index.html",
-    ROOT / "docs" / "index.html",
-    ROOT / "docs" / "automate-volatility-alerts.html",
-    ROOT / "docs" / "integrate-predictive-alpha.html",
-    ROOT / "docs" / "reduce-slippage-sentiment.html",
-    ROOT / "docs" / "automate-volatility-alerts" / "index.html",
-    ROOT / "docs" / "integrate-predictive-alpha" / "index.html",
-    ROOT / "docs" / "reduce-slippage-sentiment" / "index.html",
-]
+
+@pytest.fixture(scope="module")
+def built_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    out = tmp_path_factory.mktemp("nginx-html")
+    build_static_site(source=ROOT, output=out)
+    return out
 
 
 def test_snippet_contains_single_q8lud_config() -> None:
@@ -46,8 +49,39 @@ def test_snippet_contains_single_q8lud_config() -> None:
     assert "static.ads-twitter.com/uwt.js" in text
 
 
-@pytest.mark.parametrize("page", HTML_PAGES, ids=lambda p: str(p.relative_to(ROOT)))
-def test_public_html_includes_x_base_pixel_once(page: Path) -> None:
+def test_source_html_must_not_embed_pixel_copies() -> None:
+    """Authors edit source HTML only; pixel is injected at build time."""
+    for src in discover_public_html_sources(ROOT):
+        html = src.read_text(encoding="utf-8")
+        assert "twq('config','q8lud')" not in html, f"remove embedded pixel from source: {src.relative_to(ROOT)}"
+        assert X_PIXEL_MARKER_START not in html
+
+
+def test_future_page_under_docs_is_discovered_and_injected(tmp_path: Path) -> None:
+    docs_dir = tmp_path / "docs"
+    docs_dir.mkdir()
+    new_page = docs_dir / "future-playbook.html"
+    new_page.write_text(
+        "<!DOCTYPE html><html><head><title>t</title></head><body>x</body></html>",
+        encoding="utf-8",
+    )
+    found = discover_public_html_sources(tmp_path)
+    assert new_page in found
+    snippet = load_canonical_x_pixel_snippet(ROOT)
+    injected = inject_x_pixel_before_head_close(new_page.read_text(encoding="utf-8"), snippet)
+    assert injected.count("twq('config','q8lud')") == 1
+
+
+@pytest.mark.parametrize(
+    "rel",
+    [
+        p.relative_to(ROOT).as_posix()
+        for p in discover_public_html_sources(ROOT)
+    ],
+)
+def test_built_public_html_includes_x_base_pixel_once(built_site: Path, rel: str) -> None:
+    page = built_site / rel
+    assert page.is_file(), f"missing built page {rel}"
     html = page.read_text(encoding="utf-8")
     assert "<!-- X conversion tracking base code -->" in html
     assert html.count("twq('config','q8lud')") == 1
@@ -55,6 +89,24 @@ def test_public_html_includes_x_base_pixel_once(page: Path) -> None:
     head_end = html.index("</head>")
     snippet_pos = html.index("twq('config','q8lud')")
     assert snippet_pos < head_end
+
+
+def test_build_static_site_cli_matches_library(built_site: Path) -> None:
+    assert (built_site / "index.html").is_file()
+    assert (built_site / "assets" / "js" / "x-twclid-capture.js").is_file()
+    assert len(list(discover_public_html_sources(ROOT))) == len(
+        [p for p in discover_public_html_sources(ROOT) if (built_site / p.relative_to(ROOT)).is_file()]
+    )
+
+
+def test_strip_x_pixel_block_idempotent() -> None:
+    snippet = SNIPPET.read_text(encoding="utf-8")
+    html = f"<!DOCTYPE html><html><head><meta/></head><body></body></html>"
+    once = inject_x_pixel_before_head_close(html, snippet)
+    twice = inject_x_pixel_before_head_close(once, snippet)
+    assert once.count("twq('config','q8lud')") == 1
+    assert twice.count("twq('config','q8lud')") == 1
+    assert strip_x_pixel_block(twice).count("twq('config','q8lud')") == 0
 
 
 def test_email_normalization_and_hash() -> None:
@@ -196,3 +248,41 @@ async def test_client_api_error_returns_err() -> None:
     )
     assert isinstance(result, Err)
     assert result.error == "api_error_401"
+
+
+def test_dockerfile_runs_static_site_build() -> None:
+    dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
+    assert "build_static_site.py" in dockerfile
+
+
+@pytest.mark.integration
+def test_docker_image_serves_single_twq_config_in_head() -> None:
+    if not shutil.which("docker"):
+        pytest.skip("docker not available")
+    subprocess.run(
+        ["docker", "build", "-t", "kwizzle-landing-pixel-test", str(ROOT)],
+        check=True,
+        capture_output=True,
+    )
+    cid = subprocess.check_output(
+        [
+            "docker",
+            "run",
+            "-d",
+            "-p",
+            "18080:80",
+            "kwizzle-landing-pixel-test",
+        ],
+        text=True,
+    ).strip()
+    try:
+        import httpx
+
+        for path in ("/", "/packs/", "/docs/"):
+            resp = httpx.get(f"http://127.0.0.1:18080{path}", timeout=10.0)
+            assert resp.status_code == 200
+            assert resp.text.count("twq('config','q8lud')") == 1
+            head_end = resp.text.index("</head>")
+            assert resp.text.index("twq('config','q8lud')") < head_end
+    finally:
+        subprocess.run(["docker", "rm", "-f", cid], check=True, capture_output=True)

@@ -2,7 +2,8 @@
   "name": "kwizzle-landing-page",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/site.min.css --minify"
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/site.min.css --minify",
+    "build:site": "python scripts/build_static_site.py --source . --output build/nginx-html"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
