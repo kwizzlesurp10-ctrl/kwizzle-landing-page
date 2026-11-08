@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "legal": "Payment for delivered products, documentation/audit artifacts, or a voluntary tip. Not a token, not equity, not a raise.",
+  "network": "eip155:8453",
+  "chainId": 8453,
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "assetSymbol": "USDC",
+  "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+  "payment_rails": {
+    "stripe": {
+      "primary": true,
+      "description": "Fiat checkout rail for Pro tier and tool credit packs",
+      "configured": false,
+      "checkout_endpoints": [
+        "/stripe/checkout",
+        "/stripe/webhook"
+      ]
+    },
+    "x402_coinbase": {
+      "primary": true,
+      "description": "Crypto micropayments via x402 protocol and Coinbase CDP",
+      "initiation": {
+        "pro_upgrade": [
+          "commerce.pro_requirements",
+          "commerce.activate_pro"
+        ],
+        "tool_credits": [
+          "commerce.credits_requirements",
+          "commerce.purchase_credits"
+        ]
+      },
+      "facilitator_url": "https://x402.org/facilitator",
+      "discovery_url": "https://api.cdp.coinbase.com/platform/v2/x402/discovery/search",
+      "requires_env": [
+        "X402_PAY_TO_ADDRESS"
+      ],
+      "configured": true
+    },
+    "x402_svm": {
+      "primary": false,
+      "description": "Solana (SVM) exact scheme for seller listings. Public host registers solana:* when x402[svm] is installed; no spend key on this box.",
+      "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+      "pattern": "solana:*",
+      "scheme": "exact",
+      "requires_env": [
+        "X402_PAY_TO_ADDRESS"
+      ],
+      "configured": true,
+      "registered": true,
+      "settle": "live-scheme-registered",
+      "facilitator_note": "CDP/x402 facilitator settle on Solana mainnet is not claimed until the facilitator advertises SVM support. Listings may include solana:* accepts; settlement can fail until then."
+    },
+    "mailrail": {
+      "primary": false,
+      "description": "Transactional agent communication, alert dispatch, and receipt messaging rail",
+      "provider": "agentmail",
+      "configured": true
+    }
+  },
+  "explorer": "https://basescan.org/address/0x0d25A44f74868eCE53B305C97139CF4B62963410",
+  "tokenExplorer": "https://basescan.org/token/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913?a=0x0d25A44f74868eCE53B305C97139CF4B62963410",
+  "machineCashier": {
+    "catalog": "https://x402-mcp.onrender.com/us/cities",
+    "examplePaid": "https://x402-mcp.onrender.com/us/mn/property-check?address=1700+Penn+Ave+N",
+    "exampleFreeSample": "https://x402-mcp.onrender.com/mn/property-check/sample",
+    "protocol": "x402-v2",
+    "note": "Unpaid GET \u2192 402 PAYMENT-REQUIRED; paid retry settles USDC to payTo."
+  },
+  "bounties": {
+    "protocol": "https://github.com/kwizzlesurp10-ctrl/x402-mcp/blob/master/docs/BOUNTIES.md",
+    "issues": "https://github.com/kwizzlesurp10-ctrl/x402-mcp/issues?q=is%3Aissue+is%3Aopen+label%3A+bounty%3A",
+    "issueQuery": "https://github.com/kwizzlesurp10-ctrl/x402-mcp/issues?q=is%3Aopen+bounty%3A",
+    "template": "https://github.com/kwizzlesurp10-ctrl/x402-mcp/issues/new?template=paid-bounty.md",
+    "parentIndex": "https://github.com/kwizzlesurp10-ctrl/x402-mcp/issues/493"
+  },
+  "github": {
+    "repository": "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
+    "fundingYml": "https://github.com/kwizzlesurp10-ctrl/x402-mcp/blob/master/.github/FUNDING.yml",
+    "sponsorsNote": "GitHub Sponsors / Polar / thanks.dev settle fiat and do not credit payTo on-chain. Operator may later sweep USD\u2192USDC separately."
+  },
+  "discovery": {
+    "agentCard": "https://x402-mcp.onrender.com/.well-known/agent-card.json",
+    "agentsJson": "https://x402-mcp.onrender.com/.well-known/agents.json",
+    "x402": "https://x402-mcp.onrender.com/.well-known/x402",
+    "mcp": "https://x402-mcp.onrender.com/.well-known/mcp",
+    "mcpServerCard": "https://x402-mcp.onrender.com/.well-known/mcp/server-card.json",
+    "llmsTxt": "https://x402-mcp.onrender.com/llms.txt",
+    "openapi": "https://x402-mcp.onrender.com/openapi.json",
+    "funding": "https://x402-mcp.onrender.com/.well-known/funding.json"
+  }
+}

@@ -1,0 +1,8 @@
+/a2a  /.well-known/agent-card.json  200
+/mcp  /.well-known/mcp.json  200
+/mcp/mcp  /.well-known/mcp.json  200
+/.well-known/mcp  /.well-known/mcp.json  200
+/.well-known/x402  /.well-known/x402.json  200
+/cities  https://x402-mcp.onrender.com/us/cities  307
+/us/cities  https://x402-mcp.onrender.com/us/cities  307
+/openapi.json  https://x402-mcp.onrender.com/openapi.json  307
