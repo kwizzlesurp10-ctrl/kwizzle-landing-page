@@ -7,3 +7,4 @@ generated-packs/*
 !generated-packs/.gitkeep
 lighthouse-*.json
 .venv/
+api/x_conversion/__pycache__/
