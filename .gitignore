@@ -9,3 +9,4 @@ generated-packs/*
 lighthouse-*.json
 .venv/
 api/x_conversion/__pycache__/
+scripts/__pycache__/
