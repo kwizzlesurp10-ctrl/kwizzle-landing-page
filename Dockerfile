@@ -11,8 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY api/ ./api/
 COPY scripts/ ./scripts/
-COPY snippets/ ./snippets/
 COPY index.html favicon.ico favicon.svg robots.txt sitemap.xml llms.txt schema_org_snippet.html ./site-src/
+COPY snippets/ ./site-src/snippets/
 COPY assets/ ./site-src/assets/
 COPY docs/ ./site-src/docs/
 COPY health/ ./site-src/health/

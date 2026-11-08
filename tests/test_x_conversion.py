@@ -253,6 +253,7 @@ async def test_client_api_error_returns_err() -> None:
 def test_dockerfile_runs_static_site_build() -> None:
     dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
     assert "build_static_site.py" in dockerfile
+    assert "./site-src/snippets/" in dockerfile
 
 
 @pytest.mark.integration
