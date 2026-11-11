@@ -44,6 +44,12 @@ If the dashboard still shows a **Static Site**, migrate to **Web → Docker** (a
 
 Optional env vars: `OPENAI_API_KEY`, `PACK_PIPELINE_LLM_POLISH=true`, `OPENAI_MODEL` (default `gpt-4o-mini`). The pipeline runs without them.
 
+**X Ads conversion tracking (pixel `q8lud`):** the base pixel is injected at **build time** into every public HTML document via `scripts/build_static_site.py` (Docker runs the same step). Server reporting uses `X_PIXEL_TOKEN` and `X_CONVERSION_EVENTS` (see `.env.example` and `docs/x-conversion-tracking.md`). No credentials are committed; event IDs must be supplied before live API calls run.
+
+```bash
+python scripts/build_static_site.py --source . --output build/nginx-html
+```
+
 ---
 
 ## Prompt pack pipeline

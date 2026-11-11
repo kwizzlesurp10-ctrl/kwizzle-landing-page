@@ -10,14 +10,18 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY api/ ./api/
-COPY index.html favicon.ico favicon.svg robots.txt sitemap.xml llms.txt schema_org_snippet.html /usr/share/nginx/html/
-COPY assets/ /usr/share/nginx/html/assets/
-COPY docs/ /usr/share/nginx/html/docs/
-COPY health/ /usr/share/nginx/html/health/
-COPY packs/ /usr/share/nginx/html/packs/
-COPY sample-packs/ /usr/share/nginx/html/sample-packs/
-COPY .well-known/ /usr/share/nginx/html/.well-known/
+COPY scripts/ ./scripts/
+COPY index.html favicon.ico favicon.svg robots.txt sitemap.xml llms.txt schema_org_snippet.html ./site-src/
+COPY snippets/ ./site-src/snippets/
+COPY assets/ ./site-src/assets/
+COPY docs/ ./site-src/docs/
+COPY health/ ./site-src/health/
+COPY packs/ ./site-src/packs/
+COPY sample-packs/ ./site-src/sample-packs/
+COPY .well-known/ ./site-src/.well-known/
 COPY generated-packs/ /app/generated-packs/
+
+RUN python scripts/build_static_site.py --source /app/site-src --output /usr/share/nginx/html
 
 COPY nginx-docker.conf /etc/nginx/conf.d/default.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
