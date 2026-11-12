@@ -14,7 +14,7 @@ Autonomous artificial intelligence agents are transitioning from conversational 
 The **Kwizzle A2A Recognition, Discovery & Swarm Strategy** establishes an end-to-end framework enabling external AI agents, autonomous swarms, and LLM orchestration frameworks (LangChain, AutoGPT, Claude Code, Cursor, LlamaIndex) to:
 1. **Discover** Kwizzle's public service capabilities through RFC 8615 well-known endpoints, the Google A2A v1.0 Agent Card standard, and the `llms.txt` context standard.
 2. **Probe** service schemas, parameters, and pricing tiers with zero financial commitment using dry-run endpoints (`x402.probe`, `city.sample`).
-3. **Negotiate & Settle** per-call micropayments autonomously using the HTTP 402 Payment Required protocol (x402 v2) over Base Layer-2 (`eip155:8453`) in native USDC (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`) directed to merchant recipient `0x05e1720bB82F86B5bc7940a99FDC702E32256357`.
+3. **Negotiate & Settle** per-call micropayments autonomously using the HTTP 402 Payment Required protocol (x402 v2) over Base Layer-2 (`eip155:8453`) in native USDC (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`) directed to merchant recipient `0x0d25A44f74868eCE53B305C97139CF4B62963410`.
 4. **Collaborate** within multi-agent value chains through Model Context Protocol (MCP) remote tool bindings and autonomous swarm research/resale engines (`swarm.research`, `swarm.settle`, `swarm.revenue`).
 
 ```
@@ -134,7 +134,7 @@ Published at `/llms.txt`, this standard provides a human- and LLM-readable summa
 Key components required in Kwizzle's `llms.txt`:
 1. **H1 Title & Elevator Pitch:** Clear 1-sentence summary of Kwizzle as an A2A commerce gateway.
 2. **Quickstart for Autonomous Agents:** Step-by-step instructions on discovering the agent card and executing tools.
-3. **Settlement Coordinates:** Network (`eip155:8453`), settlement token (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`), payTo (`0x05e1720bB82F86B5bc7940a99FDC702E32256357`), facilitator (`https://x402.org/facilitator`).
+3. **Settlement Coordinates:** Network (`eip155:8453`), settlement token (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`), payTo (`0x0d25A44f74868eCE53B305C97139CF4B62963410`), facilitator (`https://x402.org/facilitator`).
 4. **Core Capabilities Index:** Grouped catalog of the 26 MCP tools across x402 buyer/seller rails, US municipal compliance, network pulse, and swarm agency.
 
 ### 2.4 Semantic Discovery via Schema.org JSON-LD
@@ -171,7 +171,7 @@ The Agent Card is a cryptographically verifiable JSON document detailing everyth
         "url": "https://kwizzlesurp.com",
         "repository": "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
         "contact": "kwizzlesurp10@gmail.com",
-        "receiveAddress": "0x05e1720bB82F86B5bc7940a99FDC702E32256357"
+        "receiveAddress": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
       },
       "capabilities": {
         "streaming": false,
@@ -188,7 +188,7 @@ The Agent Card is a cryptographically verifiable JSON document detailing everyth
               "network": "eip155:8453",
               "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
               "assetSymbol": "USDC",
-              "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+              "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
               "facilitator": "https://x402.org/facilitator",
               "facilitatorSigner": "0xd407e409E34E0b9afb99EcCeb609bDbcD5e7f1bf"
             }
@@ -224,7 +224,7 @@ Lightweight crawlers and mobile agents fetch `/.well-known/agent.json` to obtain
   "settlement": {
     "network": "eip155:8453",
     "token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-    "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357"
+    "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
   }
 }
 ```
@@ -251,8 +251,7 @@ The **x402 Micropayment Protocol** revitalizes the original RFC 2068 status code
 | **Network (CAIP-2)** | `eip155:8453` | Base Mainnet (Coinbase Ethereum L2) |
 | **Settlement Asset** | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` | Native USD Coin (USDC) on Base |
 | **Decimals** | 6 | Atomic unit: `10000` = $0.01 USDC |
-| **Merchant PayTo** | `0x05e1720bB82F86B5bc7940a99FDC702E32256357` | Primary Kwizzle Settlement Beneficiary |
-| **Operator Reserve** | `0x0d25A44f74868eCE53B305C97139CF4B62963410` | Node Host Operating & Funding Address |
+| **Merchant PayTo** | `0x0d25A44f74868eCE53B305C97139CF4B62963410` | Kwizzle settlement beneficiary (all paid routes) |
 | **Facilitator Gateway** | `https://x402.org/facilitator` | Gas sponsorship, relaying, signature verification |
 | **Designated EVM Signer**| `0xd407e409E34E0b9afb99EcCeb609bDbcD5e7f1bf` | Cryptographic signer for facilitator receipts |
 
@@ -299,7 +298,7 @@ The **x402 Micropayment Protocol** revitalizes the original RFC 2068 status code
      "currency": "USD",
      "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
      "assetSymbol": "USDC",
-     "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+     "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
      "facilitator": "https://x402.org/facilitator",
      "validUntil": 1793145600
    }

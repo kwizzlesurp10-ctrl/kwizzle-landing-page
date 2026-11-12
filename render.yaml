@@ -9,10 +9,34 @@ services:
     envVars:
       - key: PACK_PIPELINE_LLM_POLISH
         value: "false"
+    # Edge redirects: GET-safe discovery only. POST-capable paths (/mcp/*, paid APIs) are
+    # reverse-proxied in nginx (nginx-x402-proxy.conf) so clients keep kwizzlesurp.com and
+    # x402 payment retries preserve method/body.
     routes:
+      - type: redirect
+        source: /.well-known/x402
+        destination: https://x402-mcp.onrender.com/.well-known/x402
+      - type: redirect
+        source: /openapi.json
+        destination: https://x402-mcp.onrender.com/openapi.json
+      - type: redirect
+        source: /.well-known/funding.json
+        destination: https://x402-mcp.onrender.com/.well-known/funding.json
+      - type: redirect
+        source: /.well-known/agents.json
+        destination: https://x402-mcp.onrender.com/.well-known/agents.json
+      - type: redirect
+        source: /.well-known/agentic-market.json
+        destination: https://x402-mcp.onrender.com/.well-known/agentic-market.json
       - type: redirect
         source: /.well-known/mcp
         destination: https://x402-mcp.onrender.com/.well-known/mcp
       - type: redirect
         source: /.well-known/mcp/server-card.json
         destination: https://x402-mcp.onrender.com/.well-known/mcp/server-card.json
+      - type: redirect
+        source: /us/cities
+        destination: https://x402-mcp.onrender.com/us/cities
+      - type: redirect
+        source: /health
+        destination: https://x402-mcp.onrender.com/health

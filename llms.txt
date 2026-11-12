@@ -27,8 +27,7 @@ Autonomous agents can consume Kwizzle services without manual signups, custodial
 - **Blockchain Network**: Base Mainnet (`eip155:8453`)
 - **Settlement Asset**: Native USD Coin (USDC)
 - **Token Contract Address**: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
-- **Merchant PayTo Address**: `0x05e1720bB82F86B5bc7940a99FDC702E32256357`
-- **Operator Reserve Address**: `0x0d25A44f74868eCE53B305C97139CF4B62963410`
+- **Merchant PayTo Address**: `0x0d25A44f74868eCE53B305C97139CF4B62963410`
 - **x402 Facilitator URL**: `https://x402.org/facilitator`
 - **Facilitator Signer Address**: `0xd407e409E34E0b9afb99EcCeb609bDbcD5e7f1bf`
 - **Standard Per-Call Fee**: $0.01 USDC (`10000` atomic units, 6 decimals)
@@ -78,23 +77,25 @@ Kwizzle exposes 26 remote MCP tools organized across 7 functional modules:
 
 ## Supported US Municipal Jurisdictions (17 Cities)
 
-1. `mn` / Minneapolis, Minnesota
-2. `sp` / Saint Paul, Minnesota
+Catalog source: `https://x402-mcp.onrender.com/us/cities` (also proxied at `https://kwizzlesurp.com/us/cities`).
+
+1. `mn` / Minneapolis, Minnesota (legacy alias `/mn/property-check`)
+2. `sea` / Seattle, Washington
 3. `nyc` / New York City, New York
 4. `chi` / Chicago, Illinois
-5. `la` / Los Angeles, California
+5. `den` / Denver, Colorado
 6. `sf` / San Francisco, California
-7. `sea` / Seattle, Washington
+7. `lax` / Los Angeles, California
 8. `bos` / Boston, Massachusetts
-9. `den` / Denver, Colorado
-10. `atx` / Austin, Texas
-11. `phx` / Phoenix, Arizona
-12. `mia` / Miami, Florida
-13. `phl` / Philadelphia, Pennsylvania
-14. `det` / Detroit, Michigan
-15. `bal` / Baltimore, Maryland
-16. `dc` / Washington, District of Columbia
-17. `pdx` / Portland, Oregon
+9. `phi` / Philadelphia, Pennsylvania
+10. `orl` / Orlando, Florida
+11. `nola` / New Orleans, Louisiana
+12. `moco` / Montgomery County, Maryland
+13. `gain` / Gainesville, Florida
+14. `kc` / Kansas City, Missouri
+15. `atx` / Austin, Texas
+16. `bna` / Nashville, Tennessee
+17. `sd` / San Diego, California
 
 ## Developer Integration Examples
 

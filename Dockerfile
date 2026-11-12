@@ -20,6 +20,7 @@ COPY .well-known/ /usr/share/nginx/html/.well-known/
 COPY generated-packs/ /app/generated-packs/
 
 COPY nginx-docker.conf /etc/nginx/conf.d/default.conf
+COPY nginx-x402-proxy.conf nginx-x402-proxy-params.conf /etc/nginx/conf.d/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh \
     && mkdir -p /app/generated-packs
