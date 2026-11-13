@@ -94,11 +94,36 @@ def test_nginx_proxies_paid_and_discovery_paths() -> None:
         "/us/",
         "/mn/",
         "/base/",
-        "/health",
     ):
         assert fragment in proxy_conf
-    docker_conf = (ROOT / "nginx-docker.conf").read_text(encoding="utf-8")
-    assert "include /etc/nginx/conf.d/x402-proxy.conf" in docker_conf
+    assert "proxy_pass https://x402-mcp.onrender.com/health" not in proxy_conf
+    assert "/etc/nginx/snippets/x402-proxy-params.conf" in proxy_conf
+    params = (ROOT / "nginx-x402-proxy-params.conf").read_text(encoding="utf-8")
+    assert "proxy_ssl_server_name on" in params
+    assert "proxy_ssl_name x402-mcp.onrender.com" in params
+    assert "proxy_set_header Host x402-mcp.onrender.com" in params
+    assert "proxy_buffer_size 32k" in params
+    template = (ROOT / "nginx-docker.conf.template").read_text(encoding="utf-8")
+    assert "include /etc/nginx/snippets/x402-proxy.conf" in template
+    assert "listen ${PORT}" in template
+    assert "127.0.0.1:8000/health" in template
+
+
+def test_dockerfile_installs_nginx_snippets_and_validates_config() -> None:
+    dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
+    assert (
+        "COPY nginx-x402-proxy.conf /etc/nginx/snippets/x402-proxy.conf" in dockerfile
+    )
+    assert (
+        "COPY nginx-x402-proxy-params.conf /etc/nginx/snippets/x402-proxy-params.conf"
+        in dockerfile
+    )
+    assert "nginx-docker.conf.template" in dockerfile
+    assert "nginx-test" in dockerfile
+    assert "ENV PORT=10000" in dockerfile
+    entrypoint = (ROOT / "docker-entrypoint.sh").read_text(encoding="utf-8")
+    assert 'PORT="${PORT:-10000}"' in entrypoint
+    assert "nginx-test" in entrypoint
 
 
 def test_render_routes_redirect_get_safe_discovery_only() -> None:
