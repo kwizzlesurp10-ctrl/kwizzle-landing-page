@@ -6,10 +6,18 @@ services:
     image: kwizzle-landing-page:latest
     container_name: kwizzle-landing-page
     restart: unless-stopped
+    environment:
+      PORT: "${PORT:-10000}"
     ports:
-      - "${PORT:-8080}:80"
+      - "${HOST_PORT:-8080}:${PORT:-10000}"
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      test:
+        [
+          "CMD",
+          "/bin/sh",
+          "-c",
+          "wget --quiet --tries=1 --spider http://127.0.0.1:${PORT:-10000}/health",
+        ]
       interval: 15s
       timeout: 3s
       retries: 3
