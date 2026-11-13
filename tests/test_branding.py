@@ -17,6 +17,7 @@ PUBLIC_GLOBS = (
 def _public_files() -> list[Path]:
     files: list[Path] = []
     files.extend(ROOT.glob("index.html"))
+    files.extend(ROOT.glob("schema_org_snippet.html"))
     files.extend(ROOT.glob("llms.txt"))
     files.extend(ROOT.glob("*.md"))
     files.extend(ROOT.glob(".well-known/*.json"))
@@ -49,3 +50,12 @@ def test_no_standalone_kwizz_brand_in_public_html() -> None:
 def test_landing_footer_has_panda_dragon_credit() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     assert "a Panda &amp; Dragon Project" in html
+
+
+def test_no_keithstworld_in_public_content() -> None:
+    offenders: list[str] = []
+    for path in _public_files():
+        text = path.read_text(encoding="utf-8")
+        if "keithstworld" in text.lower():
+            offenders.append(str(path.relative_to(ROOT)))
+    assert offenders == [], offenders

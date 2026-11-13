@@ -121,7 +121,7 @@ Because `kwizzlesurp.com` returns `404 Not Found`, the agent cannot discover the
   * **Critical Visual Gap (`og:image`):** No image tag is present. When links are posted to X/Twitter, LinkedIn, Discord, or Telegram, the preview renders as a blank gray rectangle. A dedicated 1200x630px high-contrast graphic (`/assets/kwizzle-social-preview.png`) depicting the A2A Gateway and Base settlement flow must be served.
 * **Twitter Card (twitter:) Deficiencies:**
   * `twitter:card`: Must be `summary_large_image`.
-  * `twitter:site` & `twitter:creator`: Must credit developer handle `@keithstworld` (KwizzleSurp).
+  * `twitter:card` + `twitter:image` + `twitter:title` / `twitter:description`: Optional; omit `twitter:site` / `twitter:creator` unless an official brand X account is published.
 
 ### 4.3 Structured Data Evaluation (Schema.org JSON-LD)
 * **Current State:** **0 JSON-LD scripts present in the DOM.**
@@ -220,8 +220,6 @@ Deploy directly into the `<head>` of `index.html` at `https://kwizzlesurp.com/`:
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@keithstworld">
-<meta name="twitter:creator" content="@keithstworld">
 <meta name="twitter:title" content="Kwizzle | A2A Commerce &amp; Compliance Gateway">
 <meta name="twitter:description" content="Instant USDC micropayments on Base via x402 &amp; MCP integration for autonomous agents.">
 <meta name="twitter:image" content="https://kwizzlesurp.com/assets/kwizzle-social-preview.png">
