@@ -10,7 +10,7 @@
 
 ## 1. Executive Summary
 
-A comprehensive technical Search Engine Optimization (SEO) and machine-discovery audit was conducted on **Kwizzle** (`https://kwizzlesurp.com/`), the public web presence and entry gateway for SEVTECH’s Agent-to-Agent (A2A) Commerce and Compliance platform operated by Kwizz Severson (`kwizzlesurp10-ctrl`). The platform integrates Model Context Protocol (MCP) tooling with HTTP 402 / EIP-5573 capability micropayments settled in USDC on Base (`eip155:8453`), alongside a 17-jurisdiction US municipal property compliance open-data network.
+A comprehensive technical Search Engine Optimization (SEO) and machine-discovery audit was conducted on **Kwizzle** (`https://kwizzlesurp.com/`), the public web presence and entry gateway for SEVTECH’s Agent-to-Agent (A2A) Commerce and Compliance platform operated by KwizzleSurp (`kwizzlesurp10-ctrl`). The platform integrates Model Context Protocol (MCP) tooling with HTTP 402 / EIP-5573 capability micropayments settled in USDC on Base (`eip155:8453`), alongside a 17-jurisdiction US municipal property compliance open-data network.
 
 While the apex domain is live, served over HTTPS with TLS 1.3 / HTTP/2 via Cloudflare edge infrastructure and returns a healthy `200 OK` status, the property exhibits severe **technical SEO omissions, absent machine-discovery manifests, and an architectural bifurcation** between the apex brand domain (`kwizzlesurp.com`) and its API deployment on Render (`x402-mcp.onrender.com`).
 
@@ -121,7 +121,7 @@ Because `kwizzlesurp.com` returns `404 Not Found`, the agent cannot discover the
   * **Critical Visual Gap (`og:image`):** No image tag is present. When links are posted to X/Twitter, LinkedIn, Discord, or Telegram, the preview renders as a blank gray rectangle. A dedicated 1200x630px high-contrast graphic (`/assets/kwizzle-social-preview.png`) depicting the A2A Gateway and Base settlement flow must be served.
 * **Twitter Card (twitter:) Deficiencies:**
   * `twitter:card`: Must be `summary_large_image`.
-  * `twitter:site` & `twitter:creator`: Must credit developer handle `@keithstworld` (Kwizz Severson).
+  * `twitter:card` + `twitter:image` + `twitter:title` / `twitter:description`: Optional; omit `twitter:site` / `twitter:creator` unless an official brand X account is published.
 
 ### 4.3 Structured Data Evaluation (Schema.org JSON-LD)
 * **Current State:** **0 JSON-LD scripts present in the DOM.**
@@ -220,8 +220,6 @@ Deploy directly into the `<head>` of `index.html` at `https://kwizzlesurp.com/`:
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@keithstworld">
-<meta name="twitter:creator" content="@keithstworld">
 <meta name="twitter:title" content="Kwizzle | A2A Commerce &amp; Compliance Gateway">
 <meta name="twitter:description" content="Instant USDC micropayments on Base via x402 &amp; MCP integration for autonomous agents.">
 <meta name="twitter:image" content="https://kwizzlesurp.com/assets/kwizzle-social-preview.png">

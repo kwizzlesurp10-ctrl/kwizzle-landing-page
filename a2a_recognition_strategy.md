@@ -1,6 +1,6 @@
 # Agent-to-Agent (A2A) Recognition, Discovery & Multi-Agent Swarm Strategy
 **Target Ecosystem:** Kwizzle (`https://kwizzlesurp.com/`) & Associated Services (`https://x402-mcp.onrender.com/`)  
-**Publisher / Operator:** SEVTECH / Kwizz Severson (`kwizzlesurp10-ctrl`)  
+**Publisher / Operator:** SEVTECH / KwizzleSurp (`kwizzlesurp10-ctrl`)  
 **Specification Version:** 1.0.0  
 **Effective Date:** October 2026  
 **Status:** Approved Technical Architecture & Deployment Blueprint  
@@ -140,7 +140,7 @@ Key components required in Kwizzle's `llms.txt`:
 ### 2.4 Semantic Discovery via Schema.org JSON-LD
 
 Web crawlers and AI search engines (Perplexity, Google Search Generative Experience, OpenAI SearchBot) parse structured data to populate semantic knowledge graphs. Kwizzle embeds a connected `@graph` payload containing:
-- `schema.org/Organization`: Identity, founder (`Kwizz Severson`), GitHub profile (`kwizzlesurp10-ctrl`), and Twitter/X handle (`@keithstworld`).
+- `schema.org/Organization`: Identity, founder (`KwizzleSurp`), and GitHub profile (`kwizzlesurp10-ctrl`).
 - `schema.org/SoftwareApplication`: Classification as `DeveloperApplication` and `FinancialApplication`, declaring supported protocols (MCP, A2A, HTTP 402, Base L2) and micro-pricing models ($0.01 per call in USDC).
 - `schema.org/WebSite`: Canonical search properties.
 
