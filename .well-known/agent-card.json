@@ -26,7 +26,7 @@
         "contact": "kwizzlesurp10@gmail.com",
         "email": "kwizzlesurp10@gmail.com",
         "mailrail": "agents@x402.org",
-        "receiveAddress": "0x05e1720bB82F86B5bc7940a99FDC702E32256357"
+        "receiveAddress": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
       },
       "documentationUrl": "https://kwizzlesurp.com/llms.txt",
       "supportedInterfaces": [
@@ -61,7 +61,7 @@
         "extensions": [
           {
             "uri": "https://github.com/google-agentic-commerce/a2a-x402/blob/main/spec/v0.2",
-            "description": "Supports x402 HTTP 402 micropayments with on-chain USDC settlement on Base L2 (eip155:8453) to payTo 0x05e1720bB82F86B5bc7940a99FDC702E32256357.",
+            "description": "Supports x402 HTTP 402 micropayments with on-chain USDC settlement on Base L2 (eip155:8453) to payTo 0x0d25A44f74868eCE53B305C97139CF4B62963410.",
             "required": false,
             "params": {
               "x402Version": 2,
@@ -70,8 +70,7 @@
               "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
               "assetSymbol": "USDC",
               "amount": "10000",
-              "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
-              "operatorFunding": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+              "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
               "facilitator": "https://x402.org/facilitator",
               "facilitatorSigner": "0xd407e409E34E0b9afb99EcCeb609bDbcD5e7f1bf",
               "catalog": "https://kwizzlesurp.com/.well-known/x402",
@@ -126,7 +125,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
             "endpoint": {
               "method": "GET",
               "url": "https://kwizzlesurp.com/.well-known/agent-card.json"
@@ -166,7 +165,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
             "endpoint": {
               "method": "GET",
               "url": "https://kwizzlesurp.com/us/cities"
@@ -210,7 +209,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
             "endpoint": {
               "method": "GET",
               "url": "https://kwizzlesurp.com/us/{city_code}/property-check"
@@ -259,7 +258,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
             "endpoint": {
               "method": "GET",
               "url": "https://kwizzlesurp.com/base/tx-decision"
@@ -307,7 +306,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357",
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
             "endpoint": {
               "method": "GET",
               "url": "https://kwizzlesurp.com/base/finality-check"
@@ -351,7 +350,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357"
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
           }
         },
         {
@@ -384,7 +383,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357"
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
           }
         },
         {
@@ -416,7 +415,7 @@
             "network": "eip155:8453",
             "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
             "assetSymbol": "USDC",
-            "payTo": "0x05e1720bB82F86B5bc7940a99FDC702E32256357"
+            "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
           }
         }
       ]
