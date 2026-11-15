@@ -38,6 +38,31 @@ server {
         try_files $uri =404;
     }
 
+    location = /.well-known/x402 {
+        default_type application/json;
+        add_header Access-Control-Allow-Origin "*" always;
+        add_header Cache-Control "public, max-age=300" always;
+        try_files $uri =404;
+    }
+
+    location = /.well-known/agent.json {
+        default_type application/json;
+        add_header Access-Control-Allow-Origin "*" always;
+        try_files $uri =404;
+    }
+
+    location = /.well-known/agent-card.json {
+        default_type application/json;
+        add_header Access-Control-Allow-Origin "*" always;
+        try_files $uri =404;
+    }
+
+    # Unknown RFC 8615 paths must return 404 instead of the SPA fallback.
+    location ^~ /.well-known/ {
+        add_header Access-Control-Allow-Origin "*" always;
+        try_files $uri $uri/ =404;
+    }
+
     include /etc/nginx/snippets/x402-proxy.conf;
 
     location = /health {
@@ -50,13 +75,11 @@ server {
     }
 
     location / {
-        try_files $uri $uri.html $uri/ /index.html =404;
+        try_files $uri $uri.html $uri/ /index.html;
     }
 
     location ~* \.(?:css|js|jpg|jpeg|gif|png|ico|svg|woff|woff2|ttf|eot|pdf)$ {
         expires 30d;
         add_header Cache-Control "public, no-transform";
     }
-
-    error_page 404 /index.html;
 }

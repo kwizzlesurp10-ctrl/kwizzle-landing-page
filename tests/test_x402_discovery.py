@@ -87,7 +87,6 @@ def test_llms_city_list_matches_live_catalog() -> None:
 def test_nginx_proxies_paid_and_discovery_paths() -> None:
     proxy_conf = (ROOT / "nginx-x402-proxy.conf").read_text(encoding="utf-8")
     for fragment in (
-        "/.well-known/x402",
         "/openapi.json",
         "/.well-known/mcp",
         "/mcp/",
@@ -96,6 +95,10 @@ def test_nginx_proxies_paid_and_discovery_paths() -> None:
         "/base/",
     ):
         assert fragment in proxy_conf
+    assert "proxy_pass https://x402-mcp.onrender.com/.well-known/x402" not in proxy_conf
+    template = (ROOT / "nginx-docker.conf.template").read_text(encoding="utf-8")
+    assert "location = /.well-known/x402" in template
+    assert "error_page 404 /index.html" not in template
     assert "proxy_pass https://x402-mcp.onrender.com/health" not in proxy_conf
     assert "/etc/nginx/snippets/x402-proxy-params.conf" in proxy_conf
     params = (ROOT / "nginx-x402-proxy-params.conf").read_text(encoding="utf-8")
@@ -129,6 +132,44 @@ def test_dockerfile_installs_nginx_snippets_and_validates_config() -> None:
 def test_render_routes_redirect_get_safe_discovery_only() -> None:
     yaml = (ROOT / "render.yaml").read_text(encoding="utf-8")
     assert "destination: /index.html" not in yaml
-    assert "x402-mcp.onrender.com/.well-known/x402" in yaml
+    assert "source: /.well-known/x402" not in yaml, "aggregated x402 is served from the Docker image"
     assert re.search(r"source: /health\b", yaml)
     assert "source: /mcp/" not in yaml, "POST MCP must use nginx proxy, not edge redirect"
+
+
+def test_well_known_x402_is_valid_aggregated_json() -> None:
+    path = ROOT / ".well-known" / "x402"
+    assert path.is_file(), "run scripts/build_x402_discovery.py to refresh the catalog"
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    assert doc["service"] == "kwizzlesurp"
+    assert doc["x402_version"] == 2
+    assert doc["payTo"] == ACTIVE_PAYTO
+    assert doc["asset"].lower() == "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+    assert "eip155:8453" in doc["networks"]
+    catalog = doc["catalog"]
+    assert len(catalog) >= 40
+    for entry in catalog:
+        assert entry.get("url")
+        assert entry.get("network")
+        assert entry.get("source_service") in {
+            "x402-mcp",
+            "alpha-sentinel",
+            "x402orcle",
+            "x402-crediting-swarm",
+        }
+        assert entry.get("price") not in (None, "free")
+    urls = {e["url"] for e in catalog}
+    assert "https://alpha-sentinel-mcp.vercel.app/tools/fetch_price" in urls
+    assert "https://x402orcle.vercel.app/api/consult/oracle_ask" in urls
+    assert "https://x402-crediting-swarm.vercel.app/api/swarm" in urls
+    assert any("/us/mn/property-check" in u for u in urls)
+
+
+def test_vercel_serves_x402_without_spa_fallback() -> None:
+    vercel = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
+    header_rules = {h["source"]: h["headers"] for h in vercel["headers"]}
+    x402_headers = {item["key"]: item["value"] for item in header_rules["/.well-known/x402"]}
+    assert x402_headers["Content-Type"] == "application/json; charset=utf-8"
+    assert x402_headers["Access-Control-Allow-Origin"] == "*"
+    rewrite = vercel["rewrites"][0]["source"]
+    assert ".well-known/" in rewrite
