@@ -14,9 +14,6 @@ services:
     # x402 payment retries preserve method/body.
     routes:
       - type: redirect
-        source: /.well-known/x402
-        destination: https://x402-mcp.onrender.com/.well-known/x402
-      - type: redirect
         source: /openapi.json
         destination: https://x402-mcp.onrender.com/openapi.json
       - type: redirect

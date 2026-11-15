@@ -44,7 +44,7 @@ def test_render_routes_keep_mcp_handoffs() -> None:
     assert "destination: /index.html" not in yaml
     assert "runtime: docker" in yaml
     assert "x402-mcp.onrender.com/.well-known/mcp" in yaml
-    assert "x402-mcp.onrender.com/.well-known/x402" in yaml
+    assert "source: /.well-known/x402" not in yaml
     assert "x402-mcp.onrender.com/us/cities" in yaml
 
 
