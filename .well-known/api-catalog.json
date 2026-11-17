@@ -14,6 +14,26 @@
         {
           "href": "https://kwizzlesurp.com/.well-known/mcp/server-card.json",
           "type": "application/json"
+        },
+        {
+          "href": "https://oracle.kwizzlesurp.com/.well-known/x402",
+          "type": "application/json"
+        },
+        {
+          "href": "https://civicpulse.kwizzlesurp.com/.well-known/x402",
+          "type": "application/json"
+        },
+        {
+          "href": "https://civicpulse.kwizzlesurp.com/openapi.json",
+          "type": "application/openapi+json"
+        },
+        {
+          "href": "https://sentinel.kwizzlesurp.com/.well-known/x402",
+          "type": "application/json"
+        },
+        {
+          "href": "https://mcp.kwizzlesurp.com/.well-known/x402",
+          "type": "application/json"
         }
       ],
       "service-doc": [
@@ -29,6 +49,10 @@
       "status": [
         {
           "href": "https://x402-mcp.onrender.com/health",
+          "type": "application/json"
+        },
+        {
+          "href": "https://mcp.kwizzlesurp.com/health",
           "type": "application/json"
         }
       ],

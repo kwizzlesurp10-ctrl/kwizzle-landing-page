@@ -12,6 +12,14 @@
   "remotes": [
     {
       "type": "streamable-http",
+      "url": "https://mcp.kwizzlesurp.com/mcp"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://civicpulse.kwizzlesurp.com/mcp"
+    },
+    {
+      "type": "streamable-http",
       "url": "https://x402-mcp.onrender.com/mcp"
     },
     {

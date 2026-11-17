@@ -8,6 +8,28 @@
       "endpoint": "https://kwizzlesurp.com/"
     },
     {
+      "name": "web",
+      "endpoint": "https://oracle.kwizzlesurp.com/"
+    },
+    {
+      "name": "web",
+      "endpoint": "https://civicpulse.kwizzlesurp.com/"
+    },
+    {
+      "name": "web",
+      "endpoint": "https://sentinel.kwizzlesurp.com/"
+    },
+    {
+      "name": "MCP",
+      "endpoint": "https://mcp.kwizzlesurp.com/mcp",
+      "version": "2025-03-26"
+    },
+    {
+      "name": "MCP",
+      "endpoint": "https://civicpulse.kwizzlesurp.com/mcp",
+      "version": "2025-03-26"
+    },
+    {
       "name": "MCP",
       "endpoint": "https://x402-mcp.onrender.com/mcp",
       "version": "2025-03-26"
@@ -15,6 +37,11 @@
     {
       "name": "openapi",
       "endpoint": "https://kwizzlesurp.com/openapi.json",
+      "version": "3.1.0"
+    },
+    {
+      "name": "openapi",
+      "endpoint": "https://civicpulse.kwizzlesurp.com/openapi.json",
       "version": "3.1.0"
     },
     {
