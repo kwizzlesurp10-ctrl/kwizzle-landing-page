@@ -173,3 +173,27 @@ def test_vercel_serves_x402_without_spa_fallback() -> None:
     assert x402_headers["Access-Control-Allow-Origin"] == "*"
     rewrite = vercel["rewrites"][0]["source"]
     assert ".well-known/" in rewrite
+
+
+def test_static_discovery_json_artifacts_are_valid() -> None:
+    expected_json_files = (
+        "openapi.json",
+        "server.json",
+        ".well-known/x402.json",
+        ".well-known/api-catalog",
+        ".well-known/api-catalog.json",
+        ".well-known/mcp/server-card.json",
+        ".well-known/erc8004.json",
+        ".well-known/agents.json",
+        ".well-known/funding.json",
+        ".well-known/agentic-market.json",
+    )
+    for rel in expected_json_files:
+        path = ROOT / rel
+        assert path.is_file(), f"missing discovery artifact: {rel}"
+        parsed = json.loads(path.read_text(encoding="utf-8"))
+        assert isinstance(parsed, dict), f"expected JSON object in {rel}"
+
+    server_doc = json.loads((ROOT / "server.json").read_text(encoding="utf-8"))
+    assert "x402" not in server_doc, "x402 must live under _meta for Official MCP Registry compliance"
+    assert server_doc["_meta"]["io.modelcontextprotocol.registry/publisher-provided"]["x402"]["payTo"] == ACTIVE_PAYTO

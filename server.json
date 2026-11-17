@@ -1,0 +1,37 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.kwizzlesurp10-ctrl/x402-mcp",
+  "title": "KwizzleSurp & x402-mcp Commerce Gateway",
+  "description": "US city compliance, Base intelligence, and multi-agent x402 micropayments in Base USDC.",
+  "version": "1.30.0",
+  "websiteUrl": "https://kwizzlesurp.com/",
+  "repository": {
+    "url": "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://x402-mcp.onrender.com/mcp"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://x402-mcp.onrender.com/mcp/mcp"
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "x402": {
+        "version": "2",
+        "hubOrigin": "https://kwizzlesurp.com",
+        "discoveryCatalog": "https://kwizzlesurp.com/.well-known/x402.json",
+        "network": "eip155:8453",
+        "chainId": 8453,
+        "token": "USDC",
+        "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+        "settlementScheme": "exact"
+      }
+    }
+  }
+}

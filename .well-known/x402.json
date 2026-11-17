@@ -1,0 +1,1273 @@
+{
+  "version": 1,
+  "x402_version": 2,
+  "service": "kwizzlesurp",
+  "name": "KwizzleSurp x402 Commerce Hub",
+  "base_url": "https://kwizzlesurp.com",
+  "networks": [
+    "eip155:8453"
+  ],
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "asset_symbol": "USDC",
+  "payTo": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+  "payment_header": "PAYMENT-SIGNATURE",
+  "challenge_header": "PAYMENT-REQUIRED",
+  "receipt_header": "PAYMENT-RESPONSE",
+  "docs": "https://kwizzlesurp.com/llms.txt",
+  "agent_card": "https://kwizzlesurp.com/.well-known/agent-card.json",
+  "mcp": {
+    "manifest": "https://kwizzlesurp.com/.well-known/mcp.json"
+  },
+  "discovery": {
+    "openapi_json": "https://kwizzlesurp.com/openapi.json",
+    "api_catalog": "https://kwizzlesurp.com/.well-known/api-catalog.json",
+    "mcp_manifest": "https://kwizzlesurp.com/.well-known/mcp.json",
+    "server_card_json": "https://kwizzlesurp.com/.well-known/mcp/server-card.json",
+    "agents_json": "https://kwizzlesurp.com/.well-known/agent.json",
+    "erc8004_json": "https://kwizzlesurp.com/.well-known/erc8004.json",
+    "llms_txt": "https://kwizzlesurp.com/llms.txt"
+  },
+  "aggregated_from": [
+    {
+      "id": "x402-mcp",
+      "discovery_url": "https://x402-mcp.onrender.com/.well-known/x402",
+      "ok": true,
+      "upstream_service": "x402-micropayments-mcp",
+      "base_url": "https://x402-mcp.onrender.com",
+      "paid_resource_count": 23
+    },
+    {
+      "id": "alpha-sentinel",
+      "discovery_url": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "ok": true,
+      "upstream_service": "alpha-sentinel-mcp",
+      "base_url": "https://alpha-sentinel-mcp.vercel.app",
+      "paid_resource_count": 26
+    },
+    {
+      "id": "x402orcle",
+      "discovery_url": "https://x402orcle.vercel.app/.well-known/x402",
+      "ok": true,
+      "upstream_service": "x402orcle",
+      "base_url": "https://x402orcle.vercel.app",
+      "paid_resource_count": 5
+    },
+    {
+      "id": "x402-crediting-swarm",
+      "discovery_url": "https://x402-crediting-swarm.vercel.app/.well-known/x402",
+      "ok": true,
+      "upstream_service": null,
+      "base_url": null,
+      "paid_resource_count": 1
+    }
+  ],
+  "generated_at": "2026-11-17T03:15:35Z",
+  "resources": [
+    "https://alpha-sentinel-mcp.vercel.app/tools/aggregate_sentiment",
+    "https://alpha-sentinel-mcp.vercel.app/tools/analyze_volatility",
+    "https://alpha-sentinel-mcp.vercel.app/tools/calculate_risk_score",
+    "https://alpha-sentinel-mcp.vercel.app/tools/fetch_price",
+    "https://alpha-sentinel-mcp.vercel.app/tools/generate_market_report",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_corporate_action",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_list",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_lookup",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_model_portfolio",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_nav_deviation",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_peg_gap_radar",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_research_brief",
+    "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_seal_receipt",
+    "https://x402-crediting-swarm.vercel.app/api/swarm",
+    "https://x402-mcp.onrender.com/agent/property-due-diligence",
+    "https://x402-mcp.onrender.com/base/finality-check",
+    "https://x402-mcp.onrender.com/base/tx-decision",
+    "https://x402-mcp.onrender.com/mn/property-check",
+    "https://x402-mcp.onrender.com/swarm/products/d22bbf5f3c4b4666a6f80980c7bc7c50/purchase",
+    "https://x402-mcp.onrender.com/tasks/us-rental-diligence",
+    "https://x402-mcp.onrender.com/us/atx/property-check",
+    "https://x402-mcp.onrender.com/us/bna/property-check",
+    "https://x402-mcp.onrender.com/us/bos/property-check",
+    "https://x402-mcp.onrender.com/us/chi/property-check",
+    "https://x402-mcp.onrender.com/us/den/property-check",
+    "https://x402-mcp.onrender.com/us/gain/property-check",
+    "https://x402-mcp.onrender.com/us/kc/property-check",
+    "https://x402-mcp.onrender.com/us/lax/property-check",
+    "https://x402-mcp.onrender.com/us/mn/property-check",
+    "https://x402-mcp.onrender.com/us/moco/property-check",
+    "https://x402-mcp.onrender.com/us/nola/property-check",
+    "https://x402-mcp.onrender.com/us/nyc/property-check",
+    "https://x402-mcp.onrender.com/us/orl/property-check",
+    "https://x402-mcp.onrender.com/us/phi/property-check",
+    "https://x402-mcp.onrender.com/us/sd/property-check",
+    "https://x402-mcp.onrender.com/us/sea/property-check",
+    "https://x402-mcp.onrender.com/us/sf/property-check",
+    "https://x402orcle.vercel.app/api/consult/complete_oracle_task",
+    "https://x402orcle.vercel.app/api/consult/oracle_ask",
+    "https://x402orcle.vercel.app/api/consult/oracle_bazaar_rewrite",
+    "https://x402orcle.vercel.app/api/consult/oracle_diagnose_402",
+    "https://x402orcle.vercel.app/api/consult/oracle_review_mcp"
+  ],
+  "resource_details": [
+    {
+      "name": "aggregate_sentiment",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/aggregate_sentiment",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.01",
+      "price_usdc": 0.01,
+      "amount": "10000",
+      "description": "Aggregate social media sentiment across multiple sources."
+    },
+    {
+      "name": "analyze_volatility",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/analyze_volatility",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.02",
+      "price_usdc": 0.02,
+      "amount": "20000",
+      "description": "Analyze price volatility using statistical Z-score anomaly detection."
+    },
+    {
+      "name": "calculate_risk_score",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/calculate_risk_score",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.03",
+      "price_usdc": 0.03,
+      "amount": "30000",
+      "description": "Calculate multi-factor risk assessment for cryptocurrencies."
+    },
+    {
+      "name": "fetch_price",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/fetch_price",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.005",
+      "price_usdc": 0.005,
+      "amount": "5000",
+      "description": "Fetch real-time cryptocurrency price from CoinGecko API."
+    },
+    {
+      "name": "generate_market_report",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/generate_market_report",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.15",
+      "price_usdc": 0.15,
+      "amount": "150000",
+      "description": "Generate comprehensive market intelligence report."
+    },
+    {
+      "name": "tokenized_stock_corporate_action",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_corporate_action",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.02",
+      "price_usdc": 0.02,
+      "amount": "20000",
+      "description": "Fetch one announced/applied corporate action by UUID (from onchain Announcement URI)."
+    },
+    {
+      "name": "tokenized_stock_list",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_list",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.01",
+      "price_usdc": 0.01,
+      "amount": "10000",
+      "description": "List Coinbase tokenized stocks on Base (read-only catalog)."
+    },
+    {
+      "name": "tokenized_stock_lookup",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_lookup",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.01",
+      "price_usdc": 0.01,
+      "amount": "10000",
+      "description": "Lookup metadata for one tokenized stock (contract, ISIN, multiplier, prospectus)."
+    },
+    {
+      "name": "tokenized_stock_model_portfolio",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_model_portfolio",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.08",
+      "price_usdc": 0.08,
+      "amount": "80000",
+      "description": "Model portfolio / rebalance suggestions (weights only \u2014 no orders)."
+    },
+    {
+      "name": "tokenized_stock_nav_deviation",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_nav_deviation",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.02",
+      "price_usdc": 0.02,
+      "amount": "20000",
+      "description": "Compare Chainlink NAV/reference to underlying equity spot (research spread)."
+    },
+    {
+      "name": "tokenized_stock_peg_gap_radar",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_peg_gap_radar",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.03",
+      "price_usdc": 0.03,
+      "amount": "30000",
+      "description": "Peg-Gap Radar: onchain DEX price vs underlying reference, alerts over threshold %."
+    },
+    {
+      "name": "tokenized_stock_research_brief",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_research_brief",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.05",
+      "price_usdc": 0.05,
+      "amount": "50000",
+      "description": "Multi-symbol research brief: metadata, NAV staleness, deviation notes."
+    },
+    {
+      "name": "tokenized_stock_seal_receipt",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_seal_receipt",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.03",
+      "price_usdc": 0.03,
+      "amount": "30000",
+      "description": "Seal a Proof-of-Research receipt hash on Base (ResearchReceiptRegistry)."
+    },
+    {
+      "name": "swarm",
+      "url": "https://x402-crediting-swarm.vercel.app/api/swarm",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402-crediting-swarm",
+      "source_discovery": "https://x402-crediting-swarm.vercel.app/.well-known/x402",
+      "price": "$0.05",
+      "description": "Three-node GO/NO-GO threat intelligence report for an x402 Payment Required payload and vendor metadata on Base mainnet (eip155:8453). $0.05 USDC per POST via the CDP facilitator. Unpaid requests return HTTP 402 with PAYMENT-REQUIRED; a JSON body without a payload object returns 400; payment settlement failures return 402."
+    },
+    {
+      "name": "Property Due Diligence Agent",
+      "url": "https://x402-mcp.onrender.com/agent/property-due-diligence",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Property due diligence agent for US housing compliance open data. Is this property licensed? Single-address rental license / HPD / registration / building violations check across mn sea nyc chi den sf lax bos phi orl nola moco gain kc atx bna sd. GET ?city_code=&address= \u2192 compliance_verdict + license/violation fields (JSON). Tenant screening, landlord DD, lending. $0.01 USDC on Base.",
+      "params": {
+        "city_code": "City network code (mn, nyc, sea, \u2026)",
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Base transaction finality check",
+      "url": "https://x402-mcp.onrender.com/base/finality-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Classify a Base mainnet tx hash as not_found, pending, unsafe (sequencer-confirmed only), safe (L1-attested), or finalized (L1-finalized) -- read from the node's own safe/finalized block tags, not a modeled probability. Call after submitting a tx, when tx-decision answers the question before.",
+      "params": {
+        "tx": "0x-prefixed 32-byte transaction hash (required)"
+      }
+    },
+    {
+      "name": "Base tx decision",
+      "url": "https://x402-mcp.onrender.com/base/tx-decision",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Submit this Base tx now or wait, max fee + priority fee (EIP-1559 gwei), estimated USD cost. Call before every send.",
+      "params": {
+        "gas": "eth|usdc|erc20|x402 or integer gas units (default usdc)",
+        "urgency": "now|soon|flexible (default flexible)"
+      }
+    },
+    {
+      "name": "Minneapolis rental compliance",
+      "url": "https://x402-mcp.onrender.com/mn/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Is this Minneapolis MN rental licensed and code-compliant? GET ?address= (1-120 chars) \u2192 compliance_verdict enum licensed_clean|licensed_with_violations|unlicensed|condemned_or_boarded plus license/violation/condemned fields from city open data. Free sample: https://x402-mcp.onrender.com/mn/property-check/sample.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Base Network Pulse @ block 58471111",
+      "url": "https://x402-mcp.onrender.com/swarm/products/d22bbf5f3c4b4666a6f80980c7bc7c50/purchase",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.050000",
+      "description": "Pay in USDC to receive a cited composite intelligence report. GET or POST https://x402-mcp.onrender.com/swarm/products/d22bbf5f3c4b4666a6f80980c7bc7c50/purchase with PAYMENT-SIGNATURE after the 402 challenge.",
+      "params": {}
+    },
+    {
+      "name": "US Multi-City Rental Diligence Pack",
+      "url": "https://x402-mcp.onrender.com/tasks/us-rental-diligence",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$1.50",
+      "description": "Screen up to 5 US rental addresses across the open-data city network in one paid call. POST JSON {properties:[{city_code,address}]}. Returns per-property compliance reports + pack risk_summary. Single-address $0.01 tier remains at https://x402-mcp.onrender.com/us/{code}/property-check.",
+      "params": {
+        "properties": "array of {city_code, address}, 1-5 items (required body)",
+        "include_base_pulse_context": "optional bool"
+      }
+    },
+    {
+      "name": "Austin STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/atx/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Austin Open Data \u2014 Short Term Rental Locations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/atx/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Nashville STR Permit Check",
+      "url": "https://x402-mcp.onrender.com/us/bna/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Metro Nashville ArcGIS \u2014 Residential Short Term Rental Permits. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/bna/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Boston Property Violations",
+      "url": "https://x402-mcp.onrender.com/us/bos/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Analyze Boston \u2014 Building and Property Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/bos/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Chicago Building Violations",
+      "url": "https://x402-mcp.onrender.com/us/chi/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Chicago Open Data \u2014 Building Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/chi/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Denver STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/den/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Colorado Information Marketplace \u2014 Denver Short Term Rental Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/den/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Gainesville Code Cases",
+      "url": "https://x402-mcp.onrender.com/us/gain/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Gainesville Open Data \u2014 Code Complaints, Violations & Permits. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/gain/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "KC Exterior Building Violations",
+      "url": "https://x402-mcp.onrender.com/us/kc/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Kansas City Open Data \u2014 Open exterior building violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/kc/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "LA Code Enforcement Open",
+      "url": "https://x402-mcp.onrender.com/us/lax/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "LA Open Data \u2014 Building & Safety Code Enforcement (Open). $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/lax/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "MN Rental License Check",
+      "url": "https://x402-mcp.onrender.com/us/mn/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Minneapolis Open Data \u2014 rental licenses, violations, condemned/boarded. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/mn/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "MoCo Housing License Check",
+      "url": "https://x402-mcp.onrender.com/us/moco/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Montgomery County Open Data \u2014 Housing Licensing + Active Code Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/moco/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "NOLA STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/nola/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of New Orleans Open Data \u2014 Active Short-Term Rental Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/nola/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "NYC HPD Violations Address",
+      "url": "https://x402-mcp.onrender.com/us/nyc/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "NYC Open Data \u2014 HPD Multiple Dwelling Registrations + HMC Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/nyc/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Orlando STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/orl/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Orlando Open Data \u2014 Short Term Rental Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/orl/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Philly L&I Violations",
+      "url": "https://x402-mcp.onrender.com/us/phi/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "OpenDataPhilly / Carto \u2014 L&I violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/phi/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "San Diego STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/sd/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of San Diego Open Data \u2014 Active STRO licenses (CSV). $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sd/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Seattle Rental Registration",
+      "url": "https://x402-mcp.onrender.com/us/sea/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Seattle Open Data \u2014 Rental Property Registration. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sea/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "SF Housing NOV Check",
+      "url": "https://x402-mcp.onrender.com/us/sf/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "SF Open Data \u2014 DBI Notices of Violation. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sf/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Oracle Task",
+      "url": "https://x402orcle.vercel.app/api/consult/complete_oracle_task",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$10",
+      "price_usd": 10,
+      "atomic_amount": "10000000",
+      "description": "Outcome A2A task: typed diffs, operator handoff notes, and revenue/risk for a concrete x402 shipping goal.",
+      "params": {
+        "goal": "List oracle_ask on CDP Bazaar after first mainnet settle",
+        "constraints": "seller-only host, no EVM_PRIVATE_KEY"
+      },
+      "tags": [
+        "a2a",
+        "outcome",
+        "x402",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Oracle Ask",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_ask",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$0.1",
+      "price_usd": 0.1,
+      "atomic_amount": "100000",
+      "description": "Paid x402/MCP/A2A/Bazaar consult. JSON wisdom envelope: verdict, wisdom, developer build notes, risk, citations, receipt.",
+      "params": {
+        "question": "Why is my Bazaar listing unranked after 402s with no settlement?",
+        "audience": "agent"
+      },
+      "tags": [
+        "x402",
+        "mcp",
+        "a2a",
+        "bazaar",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Bazaar Rewrite",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_bazaar_rewrite",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$1.5",
+      "price_usd": 1.5,
+      "atomic_amount": "1500000",
+      "description": "Rewrite serviceName (\u226432), description (\u2264500), tags (\u22645) for buyer-query rank. Warns on first-index freeze.",
+      "params": {
+        "current_description": "API for data",
+        "buyer_phrases": [
+          "x402 mcp oracle",
+          "paid mcp bazaar"
+        ]
+      },
+      "tags": [
+        "bazaar",
+        "cdp",
+        "ranking",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Diagnose 402",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_diagnose_402",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$0.5",
+      "price_usd": 0.5,
+      "atomic_amount": "500000",
+      "description": "Post-mortem a 402 handshake: PAYMENT-REQUIRED shape, bazaar extension, network, asset, resource.url.",
+      "params": {
+        "challenge_b64_or_json": "eyJ4NDAyVmVyc2lvbiI6Mn0=",
+        "resource_url": "https://example.com/paid"
+      },
+      "tags": [
+        "x402",
+        "402",
+        "facilitator",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Review MCP",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_review_mcp",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$3",
+      "price_usd": 3,
+      "atomic_amount": "3000000",
+      "description": "Review an MCP paid-tool server for createPaymentWrapper, free health tool, discovery extension, burner isolation.",
+      "params": {
+        "mcp_url": "https://example.com/mcp",
+        "notes": "streamable-http, two paid tools"
+      },
+      "tags": [
+        "mcp",
+        "x402",
+        "paid-tools",
+        "oracle"
+      ]
+    }
+  ],
+  "catalog": [
+    {
+      "name": "aggregate_sentiment",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/aggregate_sentiment",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.01",
+      "price_usdc": 0.01,
+      "amount": "10000",
+      "description": "Aggregate social media sentiment across multiple sources."
+    },
+    {
+      "name": "analyze_volatility",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/analyze_volatility",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.02",
+      "price_usdc": 0.02,
+      "amount": "20000",
+      "description": "Analyze price volatility using statistical Z-score anomaly detection."
+    },
+    {
+      "name": "calculate_risk_score",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/calculate_risk_score",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.03",
+      "price_usdc": 0.03,
+      "amount": "30000",
+      "description": "Calculate multi-factor risk assessment for cryptocurrencies."
+    },
+    {
+      "name": "fetch_price",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/fetch_price",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.005",
+      "price_usdc": 0.005,
+      "amount": "5000",
+      "description": "Fetch real-time cryptocurrency price from CoinGecko API."
+    },
+    {
+      "name": "generate_market_report",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/generate_market_report",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.15",
+      "price_usdc": 0.15,
+      "amount": "150000",
+      "description": "Generate comprehensive market intelligence report."
+    },
+    {
+      "name": "tokenized_stock_corporate_action",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_corporate_action",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.02",
+      "price_usdc": 0.02,
+      "amount": "20000",
+      "description": "Fetch one announced/applied corporate action by UUID (from onchain Announcement URI)."
+    },
+    {
+      "name": "tokenized_stock_list",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_list",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.01",
+      "price_usdc": 0.01,
+      "amount": "10000",
+      "description": "List Coinbase tokenized stocks on Base (read-only catalog)."
+    },
+    {
+      "name": "tokenized_stock_lookup",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_lookup",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.01",
+      "price_usdc": 0.01,
+      "amount": "10000",
+      "description": "Lookup metadata for one tokenized stock (contract, ISIN, multiplier, prospectus)."
+    },
+    {
+      "name": "tokenized_stock_model_portfolio",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_model_portfolio",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.08",
+      "price_usdc": 0.08,
+      "amount": "80000",
+      "description": "Model portfolio / rebalance suggestions (weights only \u2014 no orders)."
+    },
+    {
+      "name": "tokenized_stock_nav_deviation",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_nav_deviation",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.02",
+      "price_usdc": 0.02,
+      "amount": "20000",
+      "description": "Compare Chainlink NAV/reference to underlying equity spot (research spread)."
+    },
+    {
+      "name": "tokenized_stock_peg_gap_radar",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_peg_gap_radar",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.03",
+      "price_usdc": 0.03,
+      "amount": "30000",
+      "description": "Peg-Gap Radar: onchain DEX price vs underlying reference, alerts over threshold %."
+    },
+    {
+      "name": "tokenized_stock_research_brief",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_research_brief",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.05",
+      "price_usdc": 0.05,
+      "amount": "50000",
+      "description": "Multi-symbol research brief: metadata, NAV staleness, deviation notes."
+    },
+    {
+      "name": "tokenized_stock_seal_receipt",
+      "url": "https://alpha-sentinel-mcp.vercel.app/tools/tokenized_stock_seal_receipt",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "alpha-sentinel",
+      "source_discovery": "https://alpha-sentinel-mcp.vercel.app/.well-known/x402",
+      "price": "$0.03",
+      "price_usdc": 0.03,
+      "amount": "30000",
+      "description": "Seal a Proof-of-Research receipt hash on Base (ResearchReceiptRegistry)."
+    },
+    {
+      "name": "swarm",
+      "url": "https://x402-crediting-swarm.vercel.app/api/swarm",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402-crediting-swarm",
+      "source_discovery": "https://x402-crediting-swarm.vercel.app/.well-known/x402",
+      "price": "$0.05",
+      "description": "Three-node GO/NO-GO threat intelligence report for an x402 Payment Required payload and vendor metadata on Base mainnet (eip155:8453). $0.05 USDC per POST via the CDP facilitator. Unpaid requests return HTTP 402 with PAYMENT-REQUIRED; a JSON body without a payload object returns 400; payment settlement failures return 402."
+    },
+    {
+      "name": "Property Due Diligence Agent",
+      "url": "https://x402-mcp.onrender.com/agent/property-due-diligence",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Property due diligence agent for US housing compliance open data. Is this property licensed? Single-address rental license / HPD / registration / building violations check across mn sea nyc chi den sf lax bos phi orl nola moco gain kc atx bna sd. GET ?city_code=&address= \u2192 compliance_verdict + license/violation fields (JSON). Tenant screening, landlord DD, lending. $0.01 USDC on Base.",
+      "params": {
+        "city_code": "City network code (mn, nyc, sea, \u2026)",
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Base transaction finality check",
+      "url": "https://x402-mcp.onrender.com/base/finality-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Classify a Base mainnet tx hash as not_found, pending, unsafe (sequencer-confirmed only), safe (L1-attested), or finalized (L1-finalized) -- read from the node's own safe/finalized block tags, not a modeled probability. Call after submitting a tx, when tx-decision answers the question before.",
+      "params": {
+        "tx": "0x-prefixed 32-byte transaction hash (required)"
+      }
+    },
+    {
+      "name": "Base tx decision",
+      "url": "https://x402-mcp.onrender.com/base/tx-decision",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Submit this Base tx now or wait, max fee + priority fee (EIP-1559 gwei), estimated USD cost. Call before every send.",
+      "params": {
+        "gas": "eth|usdc|erc20|x402 or integer gas units (default usdc)",
+        "urgency": "now|soon|flexible (default flexible)"
+      }
+    },
+    {
+      "name": "Minneapolis rental compliance",
+      "url": "https://x402-mcp.onrender.com/mn/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Is this Minneapolis MN rental licensed and code-compliant? GET ?address= (1-120 chars) \u2192 compliance_verdict enum licensed_clean|licensed_with_violations|unlicensed|condemned_or_boarded plus license/violation/condemned fields from city open data. Free sample: https://x402-mcp.onrender.com/mn/property-check/sample.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Base Network Pulse @ block 58471111",
+      "url": "https://x402-mcp.onrender.com/swarm/products/d22bbf5f3c4b4666a6f80980c7bc7c50/purchase",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.050000",
+      "description": "Pay in USDC to receive a cited composite intelligence report. GET or POST https://x402-mcp.onrender.com/swarm/products/d22bbf5f3c4b4666a6f80980c7bc7c50/purchase with PAYMENT-SIGNATURE after the 402 challenge.",
+      "params": {}
+    },
+    {
+      "name": "US Multi-City Rental Diligence Pack",
+      "url": "https://x402-mcp.onrender.com/tasks/us-rental-diligence",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$1.50",
+      "description": "Screen up to 5 US rental addresses across the open-data city network in one paid call. POST JSON {properties:[{city_code,address}]}. Returns per-property compliance reports + pack risk_summary. Single-address $0.01 tier remains at https://x402-mcp.onrender.com/us/{code}/property-check.",
+      "params": {
+        "properties": "array of {city_code, address}, 1-5 items (required body)",
+        "include_base_pulse_context": "optional bool"
+      }
+    },
+    {
+      "name": "Austin STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/atx/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Austin Open Data \u2014 Short Term Rental Locations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/atx/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Nashville STR Permit Check",
+      "url": "https://x402-mcp.onrender.com/us/bna/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Metro Nashville ArcGIS \u2014 Residential Short Term Rental Permits. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/bna/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Boston Property Violations",
+      "url": "https://x402-mcp.onrender.com/us/bos/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Analyze Boston \u2014 Building and Property Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/bos/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Chicago Building Violations",
+      "url": "https://x402-mcp.onrender.com/us/chi/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Chicago Open Data \u2014 Building Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/chi/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Denver STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/den/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Colorado Information Marketplace \u2014 Denver Short Term Rental Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/den/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Gainesville Code Cases",
+      "url": "https://x402-mcp.onrender.com/us/gain/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Gainesville Open Data \u2014 Code Complaints, Violations & Permits. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/gain/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "KC Exterior Building Violations",
+      "url": "https://x402-mcp.onrender.com/us/kc/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Kansas City Open Data \u2014 Open exterior building violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/kc/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "LA Code Enforcement Open",
+      "url": "https://x402-mcp.onrender.com/us/lax/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "LA Open Data \u2014 Building & Safety Code Enforcement (Open). $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/lax/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "MN Rental License Check",
+      "url": "https://x402-mcp.onrender.com/us/mn/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Minneapolis Open Data \u2014 rental licenses, violations, condemned/boarded. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/mn/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "MoCo Housing License Check",
+      "url": "https://x402-mcp.onrender.com/us/moco/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "Montgomery County Open Data \u2014 Housing Licensing + Active Code Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/moco/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "NOLA STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/nola/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of New Orleans Open Data \u2014 Active Short-Term Rental Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/nola/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "NYC HPD Violations Address",
+      "url": "https://x402-mcp.onrender.com/us/nyc/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "NYC Open Data \u2014 HPD Multiple Dwelling Registrations + HMC Violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/nyc/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Orlando STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/orl/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Orlando Open Data \u2014 Short Term Rental Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/orl/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Philly L&I Violations",
+      "url": "https://x402-mcp.onrender.com/us/phi/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "OpenDataPhilly / Carto \u2014 L&I violations. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/phi/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "San Diego STR License Check",
+      "url": "https://x402-mcp.onrender.com/us/sd/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of San Diego Open Data \u2014 Active STRO licenses (CSV). $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sd/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Seattle Rental Registration",
+      "url": "https://x402-mcp.onrender.com/us/sea/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "City of Seattle Open Data \u2014 Rental Property Registration. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sea/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "SF Housing NOV Check",
+      "url": "https://x402-mcp.onrender.com/us/sf/property-check",
+      "method": "GET",
+      "network": "eip155:8453",
+      "source_service": "x402-mcp",
+      "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
+      "price": "$0.01",
+      "description": "SF Open Data \u2014 DBI Notices of Violation. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sf/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "params": {
+        "address": "street address string, 1-120 chars (required)"
+      }
+    },
+    {
+      "name": "Oracle Task",
+      "url": "https://x402orcle.vercel.app/api/consult/complete_oracle_task",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$10",
+      "price_usd": 10,
+      "atomic_amount": "10000000",
+      "description": "Outcome A2A task: typed diffs, operator handoff notes, and revenue/risk for a concrete x402 shipping goal.",
+      "params": {
+        "goal": "List oracle_ask on CDP Bazaar after first mainnet settle",
+        "constraints": "seller-only host, no EVM_PRIVATE_KEY"
+      },
+      "tags": [
+        "a2a",
+        "outcome",
+        "x402",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Oracle Ask",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_ask",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$0.1",
+      "price_usd": 0.1,
+      "atomic_amount": "100000",
+      "description": "Paid x402/MCP/A2A/Bazaar consult. JSON wisdom envelope: verdict, wisdom, developer build notes, risk, citations, receipt.",
+      "params": {
+        "question": "Why is my Bazaar listing unranked after 402s with no settlement?",
+        "audience": "agent"
+      },
+      "tags": [
+        "x402",
+        "mcp",
+        "a2a",
+        "bazaar",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Bazaar Rewrite",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_bazaar_rewrite",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$1.5",
+      "price_usd": 1.5,
+      "atomic_amount": "1500000",
+      "description": "Rewrite serviceName (\u226432), description (\u2264500), tags (\u22645) for buyer-query rank. Warns on first-index freeze.",
+      "params": {
+        "current_description": "API for data",
+        "buyer_phrases": [
+          "x402 mcp oracle",
+          "paid mcp bazaar"
+        ]
+      },
+      "tags": [
+        "bazaar",
+        "cdp",
+        "ranking",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Diagnose 402",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_diagnose_402",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$0.5",
+      "price_usd": 0.5,
+      "atomic_amount": "500000",
+      "description": "Post-mortem a 402 handshake: PAYMENT-REQUIRED shape, bazaar extension, network, asset, resource.url.",
+      "params": {
+        "challenge_b64_or_json": "eyJ4NDAyVmVyc2lvbiI6Mn0=",
+        "resource_url": "https://example.com/paid"
+      },
+      "tags": [
+        "x402",
+        "402",
+        "facilitator",
+        "oracle"
+      ]
+    },
+    {
+      "name": "Review MCP",
+      "url": "https://x402orcle.vercel.app/api/consult/oracle_review_mcp",
+      "method": "POST",
+      "network": "eip155:8453",
+      "source_service": "x402orcle",
+      "source_discovery": "https://x402orcle.vercel.app/.well-known/x402",
+      "price": "$3",
+      "price_usd": 3,
+      "atomic_amount": "3000000",
+      "description": "Review an MCP paid-tool server for createPaymentWrapper, free health tool, discovery extension, burner isolation.",
+      "params": {
+        "mcp_url": "https://example.com/mcp",
+        "notes": "streamable-http, two paid tools"
+      },
+      "tags": [
+        "mcp",
+        "x402",
+        "paid-tools",
+        "oracle"
+      ]
+    }
+  ]
+}

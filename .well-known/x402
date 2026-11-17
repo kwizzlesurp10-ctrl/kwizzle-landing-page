@@ -19,8 +19,12 @@
     "manifest": "https://kwizzlesurp.com/.well-known/mcp.json"
   },
   "discovery": {
+    "openapi_json": "https://kwizzlesurp.com/openapi.json",
+    "api_catalog": "https://kwizzlesurp.com/.well-known/api-catalog.json",
     "mcp_manifest": "https://kwizzlesurp.com/.well-known/mcp.json",
+    "server_card_json": "https://kwizzlesurp.com/.well-known/mcp/server-card.json",
     "agents_json": "https://kwizzlesurp.com/.well-known/agent.json",
+    "erc8004_json": "https://kwizzlesurp.com/.well-known/erc8004.json",
     "llms_txt": "https://kwizzlesurp.com/llms.txt"
   },
   "aggregated_from": [
@@ -57,7 +61,7 @@
       "paid_resource_count": 1
     }
   ],
-  "generated_at": "2026-11-15T15:21:19Z",
+  "generated_at": "2026-11-17T03:15:35Z",
   "resources": [
     "https://alpha-sentinel-mcp.vercel.app/tools/aggregate_sentiment",
     "https://alpha-sentinel-mcp.vercel.app/tools/analyze_volatility",
@@ -324,7 +328,7 @@
       }
     },
     {
-      "name": "Base Network Pulse @ block 57824643",
+      "name": "Base Network Pulse @ block 58471111",
       "url": "https://x402-mcp.onrender.com/swarm/products/d22bbf5f3c4b4666a6f80980c7bc7c50/purchase",
       "method": "GET",
       "network": "eip155:8453",
@@ -538,7 +542,7 @@
       "source_service": "x402-mcp",
       "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
       "price": "$0.01",
-      "description": "San Diego ArcGIS \u2014 Active STRO Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sd/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "description": "City of San Diego Open Data \u2014 Active STRO licenses (CSV). $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sd/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
       "params": {
         "address": "street address string, 1-120 chars (required)"
       }
@@ -906,7 +910,7 @@
       }
     },
     {
-      "name": "Base Network Pulse @ block 57824643",
+      "name": "Base Network Pulse @ block 58471111",
       "url": "https://x402-mcp.onrender.com/swarm/products/d22bbf5f3c4b4666a6f80980c7bc7c50/purchase",
       "method": "GET",
       "network": "eip155:8453",
@@ -1120,7 +1124,7 @@
       "source_service": "x402-mcp",
       "source_discovery": "https://x402-mcp.onrender.com/.well-known/x402",
       "price": "$0.01",
-      "description": "San Diego ArcGIS \u2014 Active STRO Licenses. $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sd/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
+      "description": "City of San Diego Open Data \u2014 Active STRO licenses (CSV). $0.01-class USDC on Base. Free sample: https://x402-mcp.onrender.com/us/sd/property-check/sample. Catalog: https://x402-mcp.onrender.com/us/cities.",
       "params": {
         "address": "street address string, 1-120 chars (required)"
       }

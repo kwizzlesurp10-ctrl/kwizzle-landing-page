@@ -1,0 +1,346 @@
+{
+  "schema_version": "1.0.0",
+  "market": "agentic.market",
+  "name": "x402 Micropayments & Compliance Network",
+  "description": "Autonomous pay-per-call data services and MCP tool suite on Base mainnet.",
+  "homepage": "https://x402-mcp.onrender.com",
+  "documentation": "https://x402-mcp.onrender.com/llms.txt",
+  "provider": {
+    "name": "SEVTECH",
+    "url": "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
+    "contact_email": "kwizzlesurp10@gmail.com",
+    "mailrail": "x402-mcp@agentmail.to",
+    "receive_address": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
+  },
+  "settlement": {
+    "protocol": "x402",
+    "scheme": "EIP-3009",
+    "network": "eip155:8453",
+    "asset": "USDC",
+    "asset_address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "pay_to": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+    "facilitator_url": "https://api.cdp.coinbase.com/platform/v2/x402",
+    "payment_rails": {
+      "stripe": {
+        "primary": true,
+        "description": "Fiat checkout rail for Pro tier and tool credit packs",
+        "configured": false,
+        "checkout_endpoints": [
+          "/stripe/checkout",
+          "/stripe/webhook"
+        ]
+      },
+      "x402_coinbase": {
+        "primary": true,
+        "description": "Crypto micropayments via x402 protocol and Coinbase CDP",
+        "initiation": {
+          "pro_upgrade": [
+            "commerce.pro_requirements",
+            "commerce.activate_pro"
+          ],
+          "tool_credits": [
+            "commerce.credits_requirements",
+            "commerce.purchase_credits"
+          ]
+        },
+        "facilitator_url": "https://x402.org/facilitator",
+        "discovery_url": "https://api.cdp.coinbase.com/platform/v2/x402/discovery/search",
+        "requires_env": [
+          "X402_PAY_TO_ADDRESS"
+        ],
+        "configured": true
+      },
+      "x402_svm": {
+        "primary": false,
+        "description": "Solana (SVM) exact scheme for seller listings. Public host registers solana:* when x402[svm] is installed; no spend key on this box.",
+        "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+        "pattern": "solana:*",
+        "scheme": "exact",
+        "requires_env": [
+          "X402_PAY_TO_ADDRESS"
+        ],
+        "configured": true,
+        "registered": true,
+        "settle": "live-scheme-registered",
+        "facilitator_note": "CDP/x402 facilitator settle on Solana mainnet is not claimed until the facilitator advertises SVM support. Listings may include solana:* accepts; settlement can fail until then."
+      },
+      "mailrail": {
+        "primary": false,
+        "description": "Transactional agent communication, alert dispatch, and receipt messaging rail",
+        "provider": "agentmail",
+        "configured": true
+      }
+    }
+  },
+  "services": [
+    {
+      "id": "us-rental-diligence",
+      "name": "US Multi-City Rental Diligence Pack",
+      "type": "batch-screening",
+      "description": "Multi-address rental compliance diligence screening across US municipal open data portals.",
+      "url": "https://x402-mcp.onrender.com/tasks/us-rental-diligence",
+      "method": "POST",
+      "pricing": {
+        "amount": "1.50",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "atomic_units": 1500000
+      },
+      "sample_url": "https://x402-mcp.onrender.com/us/mn/property-check/sample",
+      "tags": [
+        "rental",
+        "compliance",
+        "batch",
+        "housing",
+        "risk-assessment"
+      ]
+    },
+    {
+      "id": "base-tx-decision",
+      "name": "Base Transaction Decision & Gas Optimizer",
+      "type": "decision-engine",
+      "description": "Live Base RPC congestion, fee math (EIP-1559), and submit-or-wait execution guidance.",
+      "url": "https://x402-mcp.onrender.com/base/tx-decision",
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "atomic_units": 10000
+      },
+      "sample_url": "https://x402-mcp.onrender.com/pulse",
+      "tags": [
+        "base",
+        "gas",
+        "tx-decision",
+        "eip-1559",
+        "optimizer"
+      ]
+    },
+    {
+      "id": "base-finality-check",
+      "name": "Base Transaction Finality Check",
+      "type": "verification",
+      "description": "L1/L2 safe and finalized block tag verification for Base mainnet transactions.",
+      "url": "https://x402-mcp.onrender.com/base/finality-check",
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "atomic_units": 10000
+      },
+      "tags": [
+        "base",
+        "finality",
+        "security",
+        "verification"
+      ]
+    },
+    {
+      "id": "us-city-compliance-network",
+      "name": "US City Open-Data Property Compliance Network",
+      "type": "data-api",
+      "description": "Real-time municipal property compliance records across 17 US jurisdictions.",
+      "url": "https://x402-mcp.onrender.com/us/cities",
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "atomic_units": 10000
+      },
+      "sample_url": "https://x402-mcp.onrender.com/us/mn/property-check/sample",
+      "tags": [
+        "property",
+        "compliance",
+        "rental",
+        "violations",
+        "open-data"
+      ],
+      "jurisdictions": [
+        "mn",
+        "sea",
+        "nyc",
+        "chi",
+        "den",
+        "sf",
+        "lax",
+        "bos",
+        "phi",
+        "orl",
+        "nola",
+        "moco",
+        "gain",
+        "kc",
+        "atx",
+        "bna",
+        "sd"
+      ]
+    },
+    {
+      "id": "mn-rental-compliance",
+      "name": "Minneapolis, MN Rental License & Compliance Check",
+      "description": "Is this Minneapolis, Minnesota (Hennepin County) address licensed for rental? Rental license status/tier/units/expiration, open violation cases, and condemned/boarded flags from City of Minneapolis open data, as normalized JSON with a source link.",
+      "url": "https://x402-mcp.onrender.com/mn/property-check",
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "model": "per_request",
+        "atomic_units": 10000,
+        "value_summary": "$0.01 USDC per Minneapolis address"
+      },
+      "tags": [
+        "minneapolis",
+        "minnesota",
+        "mn",
+        "mn-compliance",
+        "hennepin",
+        "rental-license",
+        "rental-compliance",
+        "housing",
+        "property",
+        "x402",
+        "usdc"
+      ],
+      "type": "data-api",
+      "sample_url": "https://x402-mcp.onrender.com/mn/property-check/sample"
+    },
+    {
+      "id": "x402-mailrail-postmaster",
+      "name": "MailRail Postmaster & In/Out Dispatcher",
+      "type": "communication-rail",
+      "description": "Inbound agent message ingestion, receipt tracking, and mention-defused routing.",
+      "url": "https://x402-mcp.onrender.com/mailrail/inbound",
+      "method": "POST",
+      "pricing": {
+        "amount": "0.00",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "atomic_units": 0
+      },
+      "sample_url": "https://x402-mcp.onrender.com/mailrail/health",
+      "tags": [
+        "mailrail",
+        "postmaster",
+        "communication",
+        "receipts",
+        "free"
+      ]
+    }
+  ],
+  "swarm": {
+    "agents": [
+      {
+        "role": "scout",
+        "title": "Discovery & Ecosystem Indexer",
+        "capabilities": [
+          "catalog",
+          "discovery",
+          "bazaar"
+        ]
+      },
+      {
+        "role": "warden",
+        "title": "Verification & Threat Guard",
+        "capabilities": [
+          "anti-spoofing",
+          "proof-audit",
+          "rate-limits"
+        ]
+      },
+      {
+        "role": "treasurer",
+        "title": "Settlement & Ledger Officer",
+        "capabilities": [
+          "eip-3009",
+          "receipts",
+          "margin-accounting"
+        ]
+      },
+      {
+        "role": "archivist",
+        "title": "Telemetry & Time-Series Archivist",
+        "capabilities": [
+          "audit-trail",
+          "demand-logs",
+          "event-streams"
+        ]
+      },
+      {
+        "role": "merchant",
+        "title": "Catalog & Packaging Strategist",
+        "capabilities": [
+          "pricing",
+          "composite-products",
+          "slas"
+        ]
+      },
+      {
+        "role": "sovereign",
+        "title": "Governance & Keyless Enforcement",
+        "capabilities": [
+          "policy-invariants",
+          "zero-spend-audit",
+          "kyb-anchor"
+        ]
+      },
+      {
+        "role": "postmaster",
+        "title": "MailRail Postmaster & In/Out Dispatcher",
+        "capabilities": [
+          "inbox",
+          "outbox",
+          "mention-defusing",
+          "settlement-receipts"
+        ]
+      }
+    ],
+    "model": "autonomous-cooperative"
+  },
+  "discovery": {
+    "agent_card": "https://x402-mcp.onrender.com/.well-known/agent-card.json",
+    "agents_json": "https://x402-mcp.onrender.com/.well-known/agents.json",
+    "agentic_market": "https://x402-mcp.onrender.com/.well-known/agentic-market.json",
+    "x402": "https://x402-mcp.onrender.com/.well-known/x402",
+    "mcp_server_card": "https://x402-mcp.onrender.com/.well-known/mcp/server-card.json",
+    "ai_plugin": "https://x402-mcp.onrender.com/.well-known/ai-plugin.json",
+    "funding": "https://x402-mcp.onrender.com/.well-known/funding.json",
+    "listings": [
+      {
+        "name": "24K Labs",
+        "url": "https://24klabs.ai/listing/us-city-open-data-compliance-network",
+        "badge": "https://24klabs.ai/badge.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402",
+        "card": "https://24klabs.ai/card.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402"
+      }
+    ],
+    "trust": [
+      {
+        "name": "fuchss",
+        "report": "https://x402.fuchss.app/endpoint?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402",
+        "badge": "https://x402.fuchss.app/badge.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402"
+      }
+    ]
+  },
+  "legal": "Payment for delivered products, documentation/audit artifacts, or a voluntary tip. Not a token, not equity, not a raise.",
+  "listings": [
+    {
+      "name": "24K Labs",
+      "url": "https://24klabs.ai/listing/us-city-open-data-compliance-network",
+      "badge": "https://24klabs.ai/badge.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402",
+      "card": "https://24klabs.ai/card.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402"
+    }
+  ],
+  "trust": [
+    {
+      "name": "fuchss",
+      "report": "https://x402.fuchss.app/endpoint?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402",
+      "badge": "https://x402.fuchss.app/badge.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402"
+    }
+  ],
+  "ownershipProofs": [
+    "0xeb42a05fc1526be6b7e87425eb700873cb203eccac8a3e733ad234a166b99e6f0d077d2071f05f404448b7544f014cc1b047948e673840e9c713eeec82eb4d541b"
+  ]
+}

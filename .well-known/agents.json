@@ -1,0 +1,360 @@
+{
+  "schema_version": "1.0.0",
+  "name": "x402 Micropayments & Agent Services",
+  "description": "Autonomous pay-per-call data services and MCP tool suite on Base mainnet.",
+  "homepage": "https://x402-mcp.onrender.com",
+  "documentation": "https://x402-mcp.onrender.com/llms.txt",
+  "provider": {
+    "name": "SEVTECH",
+    "url": "https://github.com/kwizzlesurp10-ctrl/x402-mcp",
+    "contact_email": "kwizzlesurp10@gmail.com",
+    "mailrail": "x402-mcp@agentmail.to",
+    "receive_address": "0x0d25A44f74868eCE53B305C97139CF4B62963410"
+  },
+  "payment_networks": [
+    "eip155:8453"
+  ],
+  "settlement_address": "0x0d25A44f74868eCE53B305C97139CF4B62963410",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "funding": "https://x402-mcp.onrender.com/.well-known/funding.json",
+  "agents": [
+    {
+      "id": "us-rental-diligence",
+      "name": "US Multi-City Rental Diligence Pack",
+      "description": "Screen up to 5 US rental addresses across the open-data city network in one paid composite call. Returns per-property compliance verdicts + pack risk summary.",
+      "roi_value_proposition": "Saves $50-$200 in manual compliance research; eliminates uninsurable tenant/lease liability by verifying official municipal licenses, open code violations, and active condemnation orders.",
+      "latency_sla": "p95 < 850ms",
+      "data_provenance": "Direct municipal open data APIs (ArcGIS FeatureServer, Socrata, Carto, CKAN)",
+      "free_preview_url": "https://x402-mcp.onrender.com/us/mn/property-check/sample",
+      "url": "https://x402-mcp.onrender.com/tasks/us-rental-diligence",
+      "method": "POST",
+      "pricing": {
+        "amount": "1.50",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "model": "per_request",
+        "atomic_units": 1500000,
+        "value_summary": "$1.50 USDC per 5-property batch screening"
+      },
+      "protocols": [
+        "x402-v2",
+        "http-json",
+        "a2a"
+      ],
+      "tags": [
+        "rental",
+        "compliance",
+        "multicity",
+        "housing",
+        "due-diligence",
+        "x402",
+        "usdc",
+        "a2a-commerce",
+        "risk-scoring"
+      ],
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "properties"
+        ],
+        "properties": {
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "city_code",
+                "address"
+              ],
+              "properties": {
+                "city_code": {
+                  "type": "string",
+                  "description": "City code (e.g. mn, sea, nyc, chi)"
+                },
+                "address": {
+                  "type": "string",
+                  "description": "Street address"
+                }
+              }
+            }
+          },
+          "include_base_pulse_context": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    {
+      "id": "base-tx-decision",
+      "name": "Base Transaction Decision & Gas Optimizer",
+      "description": "Live Base RPC congestion, fee math (EIP-1559), and submit-or-wait execution guidance.",
+      "roi_value_proposition": "Reduces failed/stuck transaction waste by 15-30% on Base mainnet via real-time EIP-1559 telemetry.",
+      "latency_sla": "p95 < 250ms",
+      "data_provenance": "Base Mainnet RPC node (mainnet.base.org) + Coinbase spot price feed",
+      "free_preview_url": "https://x402-mcp.onrender.com/pulse",
+      "url": "https://x402-mcp.onrender.com/base/tx-decision",
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "model": "per_request",
+        "atomic_units": 10000,
+        "value_summary": "$0.01 USDC per execution decision"
+      },
+      "protocols": [
+        "x402-v2",
+        "http-json",
+        "a2a"
+      ],
+      "tags": [
+        "base",
+        "crypto",
+        "gas",
+        "tx-optimizer",
+        "x402",
+        "usdc",
+        "eip-1559",
+        "a2a-commerce"
+      ],
+      "params": {
+        "gas": "eth|usdc|erc20|x402 or integer gas units",
+        "urgency": "now|soon|flexible"
+      }
+    },
+    {
+      "id": "base-finality-check",
+      "name": "Base Transaction Finality Check",
+      "description": "L1/L2 safe and finalized block tag verification for Base mainnet transactions.",
+      "roi_value_proposition": "Provides absolute cryptographic assurance before unlocking high-value goods or services.",
+      "latency_sla": "p95 < 250ms",
+      "data_provenance": "Base Mainnet RPC safe/finalized block header inspection",
+      "url": "https://x402-mcp.onrender.com/base/finality-check",
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "model": "per_request",
+        "atomic_units": 10000,
+        "value_summary": "$0.01 USDC per transaction check"
+      },
+      "protocols": [
+        "x402-v2",
+        "http-json",
+        "a2a"
+      ],
+      "tags": [
+        "base",
+        "finality",
+        "verification",
+        "x402",
+        "usdc",
+        "a2a-commerce"
+      ],
+      "params": {
+        "tx": "0x-prefixed 32-byte transaction hash"
+      }
+    },
+    {
+      "id": "us-city-compliance-network",
+      "name": "US City Open-Data Property Compliance Network",
+      "description": "Address-level housing license, building violation, and code compliance checks across 17 US jurisdictions.",
+      "roi_value_proposition": "Instant property compliance intelligence covering 18 metropolitan jurisdictions with zero setup.",
+      "latency_sla": "p95 < 600ms",
+      "data_provenance": "Municipal open data portals (Minneapolis, Seattle, NYC, Chicago, Denver, SF, LA, Boston, Philly, Orlando, NOLA, MoCo, Gainesville, KC, Austin, Miami, Atlanta, San Diego)",
+      "catalog_url": "https://x402-mcp.onrender.com/us/cities",
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "model": "per_request",
+        "atomic_units": 10000,
+        "value_summary": "$0.01 USDC per municipal query"
+      },
+      "protocols": [
+        "x402-v2",
+        "http-json",
+        "a2a"
+      ],
+      "tags": [
+        "property",
+        "compliance",
+        "rental",
+        "housing",
+        "violations",
+        "open-data",
+        "x402",
+        "a2a-commerce"
+      ],
+      "jurisdictions": [
+        "mn",
+        "sea",
+        "nyc",
+        "chi",
+        "den",
+        "sf",
+        "lax",
+        "bos",
+        "phi",
+        "orl",
+        "nola",
+        "moco",
+        "gain",
+        "kc",
+        "atx",
+        "bna",
+        "sd"
+      ],
+      "url": "https://x402-mcp.onrender.com/us/{city_code}/property-check",
+      "params": {
+        "city_code": "City code from /us/cities (e.g. mn = Minneapolis, MN)",
+        "address": "Street address in the target city (1-120 chars)"
+      }
+    },
+    {
+      "id": "mn-rental-compliance",
+      "name": "Minneapolis, MN Rental License & Compliance Check",
+      "description": "Is this Minneapolis, Minnesota (Hennepin County) address licensed for rental? Rental license status/tier/units/expiration, open violation cases, and condemned/boarded flags from City of Minneapolis open data, as normalized JSON with a source link.",
+      "data_provenance": "City of Minneapolis Open Data (ArcGIS): rental licenses, violations, condemned/boarded",
+      "free_preview_url": "https://x402-mcp.onrender.com/mn/property-check/sample",
+      "url": "https://x402-mcp.onrender.com/mn/property-check",
+      "alternate_urls": [
+        "https://x402-mcp.onrender.com/us/mn/property-check"
+      ],
+      "method": "GET",
+      "pricing": {
+        "amount": "0.01",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "model": "per_request",
+        "atomic_units": 10000,
+        "value_summary": "$0.01 USDC per Minneapolis address"
+      },
+      "protocols": [
+        "x402-v2",
+        "http-json",
+        "a2a",
+        "mcp"
+      ],
+      "a2a": {
+        "url": "https://x402-mcp.onrender.com/a2a",
+        "skillId": "property-check-mn"
+      },
+      "mcp": {
+        "url": "https://x402-mcp.onrender.com/mcp/mcp",
+        "tool": "city.check",
+        "arguments": {
+          "city_code": "mn"
+        }
+      },
+      "tags": [
+        "minneapolis",
+        "minnesota",
+        "mn",
+        "mn-compliance",
+        "hennepin",
+        "rental-license",
+        "rental-compliance",
+        "housing",
+        "property",
+        "x402",
+        "usdc"
+      ],
+      "params": {
+        "address": "Minneapolis street address (1-120 chars), e.g. 1700 Penn Ave N"
+      }
+    },
+    {
+      "id": "x402-mailrail-postmaster",
+      "name": "MailRail Postmaster & In/Out Dispatcher",
+      "description": "Dedicated gateway for inbound agent message/webhook ingestion, outbound transactional receipt dispatching, mention defusing, and delivery telemetry.",
+      "roi_value_proposition": "Ensures guaranteed zero-spam deduplication and mention-safe routing for inter-agent workflows.",
+      "latency_sla": "p95 < 150ms",
+      "data_provenance": "Local append-only JSONL ledgers + verified outbound dispatch providers",
+      "free_preview_url": "https://x402-mcp.onrender.com/mailrail/health",
+      "url": "https://x402-mcp.onrender.com/mailrail/inbound",
+      "method": "POST",
+      "pricing": {
+        "amount": "0.00",
+        "currency": "USDC",
+        "network": "eip155:8453",
+        "model": "free_tier",
+        "atomic_units": 0,
+        "value_summary": "Free platform utility for swarm agents"
+      },
+      "protocols": [
+        "x402-v2",
+        "http-json",
+        "a2a",
+        "mailrail"
+      ],
+      "tags": [
+        "mailrail",
+        "postmaster",
+        "inbox",
+        "outbox",
+        "receipts",
+        "agent-communication",
+        "free"
+      ],
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "sender",
+          "subject",
+          "body"
+        ],
+        "properties": {
+          "sender": {
+            "type": "string",
+            "description": "Sender address, agent ID, or system handle"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject line or topic"
+          },
+          "body": {
+            "type": "string",
+            "description": "Message body text"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Optional payload metadata"
+          }
+        }
+      }
+    }
+  ],
+  "mcp": {
+    "manifest": "https://x402-mcp.onrender.com/.well-known/mcp",
+    "server_card": "https://x402-mcp.onrender.com/.well-known/mcp/server-card.json",
+    "streamable_http": "https://x402-mcp.onrender.com/mcp/mcp",
+    "sse": "https://x402-mcp.onrender.com/mcp/sse"
+  },
+  "agent_card": "https://x402-mcp.onrender.com/.well-known/agent-card.json",
+  "agentic_market": "https://x402-mcp.onrender.com/.well-known/agentic-market.json",
+  "ai_plugin": "https://x402-mcp.onrender.com/.well-known/ai-plugin.json",
+  "x402_manifest": "https://x402-mcp.onrender.com/.well-known/x402",
+  "legal": "Payment for delivered products, documentation/audit artifacts, or a voluntary tip. Not a token, not equity, not a raise.",
+  "listings": [
+    {
+      "name": "24K Labs",
+      "url": "https://24klabs.ai/listing/us-city-open-data-compliance-network",
+      "badge": "https://24klabs.ai/badge.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402",
+      "card": "https://24klabs.ai/card.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402"
+    }
+  ],
+  "trust": [
+    {
+      "name": "fuchss",
+      "report": "https://x402.fuchss.app/endpoint?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402",
+      "badge": "https://x402.fuchss.app/badge.svg?resource=https%3A%2F%2Fx402-mcp.onrender.com%2F.well-known%2Fx402"
+    }
+  ],
+  "ownershipProofs": [
+    "0xeb42a05fc1526be6b7e87425eb700873cb203eccac8a3e733ad234a166b99e6f0d077d2071f05f404448b7544f014cc1b047948e673840e9c713eeec82eb4d541b"
+  ]
+}

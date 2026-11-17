@@ -9,6 +9,56 @@
       ]
     },
     {
+      "source": "/.well-known/x402.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=300" }
+      ]
+    },
+    {
+      "source": "/.well-known/api-catalog",
+      "headers": [
+        { "key": "Content-Type", "value": "application/linkset+json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/.well-known/api-catalog.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/linkset+json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/.well-known/mcp/server-card.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/.well-known/erc8004.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/openapi.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/server.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
       "source": "/.well-known/agent.json",
       "headers": [
         { "key": "Content-Type", "value": "application/json; charset=utf-8" },
@@ -32,7 +82,7 @@
   ],
   "rewrites": [
     {
-      "source": "/:path((?!\\.well-known/|llms\\.txt|robots\\.txt|sitemap\\.xml|openapi\\.json|favicon\\.ico|assets/|docs/|packs/|sample-packs/|health/).*)",
+      "source": "/:path((?!\\.well-known/|llms\\.txt|robots\\.txt|sitemap\\.xml|openapi\\.json|server\\.json|favicon\\.ico|assets/|docs/|packs/|sample-packs/|health/).*)",
       "destination": "/index.html"
     }
   ]

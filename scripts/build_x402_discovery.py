@@ -14,6 +14,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_PATH = ROOT / ".well-known" / "x402"
+OUT_JSON_PATH = ROOT / ".well-known" / "x402.json"
 
 BASE_ASSET = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
 PAY_TO = "0x0d25A44f74868eCE53B305C97139CF4B62963410"
@@ -210,8 +211,12 @@ def build_document(fetches: list[UpstreamFetch]) -> dict[str, Any]:
         "agent_card": f"{HUB_BASE_URL}/.well-known/agent-card.json",
         "mcp": {"manifest": f"{HUB_BASE_URL}/.well-known/mcp.json"},
         "discovery": {
+            "openapi_json": f"{HUB_BASE_URL}/openapi.json",
+            "api_catalog": f"{HUB_BASE_URL}/.well-known/api-catalog.json",
             "mcp_manifest": f"{HUB_BASE_URL}/.well-known/mcp.json",
+            "server_card_json": f"{HUB_BASE_URL}/.well-known/mcp/server-card.json",
             "agents_json": f"{HUB_BASE_URL}/.well-known/agent.json",
+            "erc8004_json": f"{HUB_BASE_URL}/.well-known/erc8004.json",
             "llms_txt": f"{HUB_BASE_URL}/llms.txt",
         },
         "aggregated_from": sources,
@@ -243,6 +248,7 @@ def main() -> int:
             return 1
         print("WARNING: using existing .well-known/x402 as fallback (all fetches failed)", file=sys.stderr)
         OUT_PATH.write_text(json.dumps(fallback, indent=2) + "\n", encoding="utf-8")
+        OUT_JSON_PATH.write_text(json.dumps(fallback, indent=2) + "\n", encoding="utf-8")
         return 0
 
     doc = build_document(fetches)
@@ -256,8 +262,10 @@ def main() -> int:
             return 1
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {OUT_PATH} ({len(doc['catalog'])} paid resources, {ok_count}/{len(fetches)} upstream OK)")
+    rendered = json.dumps(doc, indent=2) + "\n"
+    OUT_PATH.write_text(rendered, encoding="utf-8")
+    OUT_JSON_PATH.write_text(rendered, encoding="utf-8")
+    print(f"Wrote {OUT_PATH} and {OUT_JSON_PATH} ({len(doc['catalog'])} paid resources, {ok_count}/{len(fetches)} upstream OK)")
     return 0
 
 

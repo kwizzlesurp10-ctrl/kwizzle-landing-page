@@ -1,0 +1,51 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://kwizzlesurp.com/",
+      "service-desc": [
+        {
+          "href": "https://kwizzlesurp.com/openapi.json",
+          "type": "application/openapi+json"
+        },
+        {
+          "href": "https://kwizzlesurp.com/.well-known/x402.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://kwizzlesurp.com/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://kwizzlesurp.com/llms.txt",
+          "type": "text/plain"
+        },
+        {
+          "href": "https://kwizzlesurp.com/docs/",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://x402-mcp.onrender.com/health",
+          "type": "application/json"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://kwizzlesurp.com/.well-known/agent-card.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://kwizzlesurp.com/.well-known/mcp.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://kwizzlesurp.com/.well-known/erc8004.json",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

@@ -10,7 +10,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY api/ ./api/
-COPY index.html favicon.ico favicon.svg robots.txt sitemap.xml llms.txt schema_org_snippet.html /usr/share/nginx/html/
+COPY index.html favicon.ico favicon.svg robots.txt sitemap.xml llms.txt schema_org_snippet.html openapi.json server.json /usr/share/nginx/html/
 COPY assets/ /usr/share/nginx/html/assets/
 COPY docs/ /usr/share/nginx/html/docs/
 COPY health/ /usr/share/nginx/html/health/
