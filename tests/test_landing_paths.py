@@ -125,3 +125,16 @@ def test_seo_and_protocol_upgrades_present() -> None:
     ):
         assert doc_path.exists() and doc_path.stat().st_size > 1000
 
+
+def test_apexseo_project_card_and_assets_present() -> None:
+    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    assert "ApexSEO GEO &amp; AI-Crawler Audit MCP" in html
+    assert "https://apexseo-geo-mcp.vercel.app" in html
+    assert "https://github.com/kwizzlesurp10-ctrl/apexseo-geo-mcp" in html
+    assert "/assets/img/apexseo-geo-mcp.png" in html
+    assert "/assets/img/apexseo-geo-mcp.webp" in html
+    png_bytes = (ROOT / "assets" / "img" / "apexseo-geo-mcp.png").read_bytes()
+    webp_bytes = (ROOT / "assets" / "img" / "apexseo-geo-mcp.webp").read_bytes()
+    assert png_bytes[:8] == b"\x89PNG\r\n\x1a\n"
+    assert webp_bytes[:4] == b"RIFF" and webp_bytes[8:12] == b"WEBP"
+
